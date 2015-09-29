@@ -150,70 +150,75 @@ DMS_DEBUG = false;
 	DMS_ai_enable_water_equipment		= true;						// Enable/disable overriding default weapons of an AI if it spawns on/in water
 
 	// https://community.bistudio.com/wiki/AI_Sub-skills#general
+	_static_skill                       = 0.70;
+	_easy_skill                         = 0.40;
+    _moderate_skill                     = 0.60;
+	_difficult_skill                    = 0.80;
+	_hardcore_skill                     = 1.00;
 	DMS_ai_skill_static					= [
-											["aimingAccuracy",0.20],
-											["aimingShake",0.70],
-											["aimingSpeed",0.70],
-											["spotDistance",0.70],
-											["spotTime",0.70],
-											["courage",0.70],
-											["reloadSpeed",0.70],
-											["commanding",0.70],
-											["general",0.70]
+											["aimingAccuracy",(_static_skill / 2)],
+											["aimingShake",_static_skill],
+											["aimingSpeed",_static_skill],
+											["spotDistance",_static_skill],
+											["spotTime",_static_skill],
+											["courage",_static_skill],
+											["reloadSpeed",_static_skill],
+											["commanding",_static_skill],
+											["general",_static_skill]
                                         ];	// Static AI Skills
 	DMS_ai_skill_easy					= [
-	                                        ["aimingAccuracy",0.15],
-	                                        ["aimingShake",0.50],
-	                                        ["aimingSpeed",0.50],
-	                                        ["spotDistance",0.50],
-	                                        ["spotTime",0.50],
-	                                        ["courage",0.50],
-	                                        ["reloadSpeed",0.50],
-	                                        ["commanding",0.50],
-	                                        ["general",0.50]
+											["aimingAccuracy",(_easy_skill / 2)],
+											["aimingShake",_easy_skill],
+											["aimingSpeed",_easy_skill],
+											["spotDistance",_easy_skill],
+											["spotTime",_easy_skill],
+											["courage",_easy_skill],
+											["reloadSpeed",_easy_skill],
+											["commanding",_easy_skill],
+											["general",_easy_skill]
                                         ];	// Easy
 	DMS_ai_skill_moderate				= [
-                                            ["aimingAccuracy",0.20],
-                                            ["aimingShake",0.60],
-                                            ["aimingSpeed",0.60],
-                                            ["spotDistance",0.60],
-                                            ["spotTime",0.60],
-                                            ["courage",0.60],
-                                            ["reloadSpeed",0.60],
-                                            ["commanding",0.60],
-                                            ["general",0.60]
+											["aimingAccuracy",(_moderate_skill / 2)],
+											["aimingShake",_moderate_skill],
+											["aimingSpeed",_moderate_skill],
+											["spotDistance",_moderate_skill],
+											["spotTime",_moderate_skill],
+											["courage",_moderate_skill],
+											["reloadSpeed",_moderate_skill],
+											["commanding",_moderate_skill],
+											["general",_moderate_skill]
                                         ];	// Moderate
 	DMS_ai_skill_difficult				= [
-                                            ["aimingAccuracy",0.25],
-                                            ["aimingShake",0.70],
-                                            ["aimingSpeed",0.70],
-                                            ["spotDistance",0.70],
-                                            ["spotTime",0.70],
-                                            ["courage",0.70],
-                                            ["reloadSpeed",0.70],
-                                            ["commanding",0.70],
-                                            ["general",0.70]
+											["aimingAccuracy",(_difficult_skill / 2)],
+											["aimingShake",_difficult_skill],
+											["aimingSpeed",_difficult_skill],
+											["spotDistance",_difficult_skill],
+											["spotTime",_difficult_skill],
+											["courage",_difficult_skill],
+											["reloadSpeed",_difficult_skill],
+											["commanding",_difficult_skill],
+											["general",_difficult_skill]
                                         ]; 	// Difficult
 	DMS_ai_skill_hardcore				= [
-	                                        ["aimingAccuracy",0.30],
-	                                        ["aimingShake",0.80],
-	                                        ["aimingSpeed",0.00],
-	                                        ["spotDistance",0.80],
-	                                        ["spotTime",0.80],
-	                                        ["courage",0.80],
-	                                        ["reloadSpeed",0.80],
-	                                        ["commanding",0.80],
-	                                        ["general",0.80]
+											["aimingAccuracy",(_hardcore_skill / 2)],
+											["aimingShake",_hardcore_skill],
+											["aimingSpeed",_hardcore_skill],
+											["spotDistance",_hardcore_skill],
+											["spotTime",_hardcore_skill],
+											["courage",_hardcore_skill],
+											["reloadSpeed",_hardcore_skill],
+											["commanding",_hardcore_skill],
+											["general",_hardcore_skill]
                                         ]; 	// Hardcore
 	DMS_ai_skill_random					= [
                                             "hardcore",
+                                            "hardcore",
                                             "difficult",
                                             "difficult",
+                                            "difficult",
                                             "moderate",
                                             "moderate",
                                             "moderate",
-                                            "easy",
-                                            "easy",
                                             "easy",
                                             "easy"
                                         ];	// Skill frequencies for "random" AI skills | Default: 10% hardcore, 30% difficult, 40% moderate, and 20% easy
