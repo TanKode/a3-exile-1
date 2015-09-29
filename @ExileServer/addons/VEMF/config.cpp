@@ -50,33 +50,7 @@ class VEMFconfig
 		difficulty = "Veteran"; // Options: "Easy" "Normal" "Veteran" "Hardcore" | Default: Veteran
 		class Easy // AI looks stupid with this setting xD
 		{
-			accuracy = 0.10;
-			aimingShake = 0.50;
-			aimingSpeed = 0.50;
-			endurance = 0.50;
-			spotDistance = 0.50;
-			spotTime = 0.50;
-			courage = 0.50;
-			reloadSpeed = 0.50;
-			commanding = 0.50;
-			general = 0.50;
-		};
-		class Normal
-		{
-			accuracy = 0.15;
-			aimingShake = 0.60;
-			aimingSpeed = 0.60;
-			endurance = 0.60;
-			spotDistance = 0.60;
-			spotTime = 0.60;
-			courage = 0.60;
-			reloadSpeed = 0.60;
-			commanding = 0.60;
-			general = 0.60;
-		};
-		class Veteran
-		{
-			accuracy = 0.20;
+			accuracy = 0.60;
 			aimingShake = 0.70;
 			aimingSpeed = 0.70;
 			endurance = 0.70;
@@ -87,9 +61,9 @@ class VEMFconfig
 			commanding = 0.70;
 			general = 0.70;
 		};
-		class Hardcore // Also known as Aimbots
+		class Normal
 		{
-			accuracy = 0.25;
+			accuracy = 0.70;
 			aimingShake = 0.80;
 			aimingSpeed = 0.80;
 			endurance = 0.80;
@@ -100,6 +74,32 @@ class VEMFconfig
 			commanding = 0.80;
 			general = 0.80;
 		};
+		class Veteran
+		{
+			accuracy = 0.80;
+			aimingShake = 0.90;
+			aimingSpeed = 0.90;
+			endurance = 0.90;
+			spotDistance = 0.90;
+			spotTime = 0.90;
+			courage = 0.90;
+			reloadSpeed = 0.90;
+			commanding = 0.90;
+			general = 0.90;
+		};
+		class Hardcore // Also known as Aimbots
+		{
+			accuracy = 0.90;
+			aimingShake = 1;
+			aimingSpeed = 1;
+			endurance = 1;
+			spotDistance = 1;
+			spotTime = 1;
+			courage = 1;
+			reloadSpeed = 1;
+			commanding = 1;
+			general = 1;
+		};
 	};
 
 	class DLI // DynamicLocationInvasion settings
@@ -107,9 +107,9 @@ class VEMFconfig
 		useMarker = 1; // Use -1 to disable mission markers
 		maxInvasions = 5; // Max amount of active uncompleted invasions allowed at the same time
 		cal50s = 0; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
-		groupCount = 5; // Amount of groups that spawn at location
-		groupUnits = 4; // Amount of units in each group. Better to keep this low and increase the groupCount instead.
-		useLaunchers = -1; // Set to -1 if you do NOT want the AI to have launchers
+		groupCount = 10; // Amount of groups that spawn at location
+		groupUnits = 6; // Amount of units in each group. Better to keep this low and increase the groupCount instead.
+		useLaunchers = 1; // Set to -1 if you do NOT want the AI to have launchers
 			remLaunchers = 1; // Set to -1 if you do NOT want the launcher (and its ammo) to be removed from AI when they die
 			hasLauncherChance = 25; // In percentage. How big the chance is that a unit gets a launcher
 		playerCheck = 800; // If player(s) within this range of location, location gets skipped. Distance in m (meters)
@@ -118,16 +118,16 @@ class VEMFconfig
 		distanceTooClose = 2000; // Mission will not spawn closer to random player than this distance in meters
 		distanceMaxPrefered = 7000; // Mission will prefer locations closer than this distance (in meters) to random player
 		parachuteCrate = 1; // Use -1 to disable the crate parachuting in
-			crateAltitude = 250; // Crate with parachute(!) will spawn at this altitude (meters)
+			crateAltitude = 500; // Crate with parachute(!) will spawn at this altitude (meters)
 		crateMapMarker = -1; // Use -1 if you do not want a marker to be placed on the crate
 		crateVisualMarker = 1; // Use -1 to disable chemlight/smoke on crate
 		crateSpawnSound = 1; // Use -1 to disable a spawn sound when crate spawns (only if parachuteCrate = 1)
 		crateTypes[] = {"I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F","I_supplyCrate_F","Box_East_AmmoVeh_F","Box_NATO_AmmoVeh_F"};
 		smokeTypes[] = {"SmokeShell","SmokeShellBlue","SmokeShellGreen","SmokeShellOrange","SmokeShellRed","SmokeShellYellow"};
 		flairTypes[] = {"Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue"};
-		placeMines = -1; // Set to -1 if you do not want mines at missions
+		placeMines = 1; // Set to -1 if you do not want mines at missions
 		minesMode = 1; // 1 = Anti-Armor | 2 = Anti-Personell | 3 = Both Anti-Armor and Anti-Personell
-			minesAmount = 20; // Ignore if placeMines = -1;
+			minesAmount = 10; // Ignore if placeMines = -1;
 			cleanMines = 1; // 1 = remove mines when mission done | 2 = explode mines when mission done :D guarenteed chaos, LOL!
 	};
 
