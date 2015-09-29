@@ -23,7 +23,7 @@ class VEMFconfig
 	minServerFPS = 20; // Missions will not spawn if server's FPS is below this number
 	validateLoot = 1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
 	minPlayers = 1; // Missions will not start until player count reaches this number OR when player count goes below this amount
-	maxGlobalMissions = 2; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
+	maxGlobalMissions = 5; // Use -1 to disable limit | Max amount of missions that are allowed to run at the same time
  	timeOutTime = -1; // In minutes. Use -1 to disable mission timeout; Minimal: 5
 	minNew = 1; // Minimum time before new mission can run
 	maxNew = 10; // Maximum time before new mission can run
@@ -38,7 +38,7 @@ class VEMFconfig
 	keepAIbodies = 1; // Set to -1 if you want the AI's body to be deleted after they are killed
 	aiPoliceMode = 1; // Use -1 to give AI normal soldier clothing
 	giveKillerRespect = 1; // Use -1 to not give the killer of AI respect
-	baseRespectGive = 100; // Minimum respect gain. VEMF dynamically rewards higher for distance
+	baseRespectGive = 50; // Minimum respect gain. VEMF dynamically rewards higher for distance
 
 	/////// Debugging/learning mode ///////
 	enableDebug = 0; // -1 to disable, 0 = ERRORS only | 1 = INFO only | 2 = ERRORS & INFO
@@ -105,8 +105,8 @@ class VEMFconfig
 	class DLI // DynamicLocationInvasion settings
 	{
 		useMarker = 1; // Use -1 to disable mission markers
-		maxInvasions = 2; // Max amount of active uncompleted invasions allowed at the same time
-		cal50s = 1; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
+		maxInvasions = 5; // Max amount of active uncompleted invasions allowed at the same time
+		cal50s = 0; // Max amount of .50 caliber machineguns at mission | Needs to be lower than total unit count per mission
 		groupCount = 5; // Amount of groups that spawn at location
 		groupUnits = 4; // Amount of units in each group. Better to keep this low and increase the groupCount instead.
 		useLaunchers = -1; // Set to -1 if you do NOT want the AI to have launchers
@@ -165,54 +165,55 @@ class VEMFconfig
 		minPrimarySlots = 1; // Minimum primary weapons in each loot crate
 		primaryWeaponLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
-			{"srifle_DMR_01_F",2},{"srifle_EBR_F",3},{"srifle_GM6_F",1},{"LMG_Mk200_F",3},{"LMG_Zafir_F",3},{"arifle_Katiba_F",3},{"arifle_Katiba_GL_F",2},{"arifle_Mk20_F",2},
-			{"arifle_Mk20_plain_F",2},{"arifle_Mk20C_F",2},{"arifle_Mk20C_plain_F",2},{"arifle_Mk20_GL_F",2},{"arifle_Mk20_GL_plain_F",2},{"arifle_MXC_F",2},{"arifle_MX_F",2},
-			{"arifle_MX_GL_F",2},{"arifle_MX_SW_F",2},{"arifle_MXM_F",2},{"arifle_MXC_Black_F",2},{"arifle_MX_Black_F",2},{"arifle_MX_GL_Black_F",2},{"arifle_MX_SW_Black_F",2},
-			{"arifle_MXM_Black_F",2},{"arifle_SDAR_F",2},{"arifle_TRG21_F",2},{"arifle_TRG20_F",2},{"arifle_TRG21_GL_F",2},{"SMG_01_F",2},{"SMG_02_F",2},{"srifle_GM6_camo_F",2},
-			{"srifle_LRR_camo_F",2},{"srifle_DMR_02_F",2},{"srifle_DMR_02_camo_F",2},{"srifle_DMR_02_sniper_F",2},{"srifle_DMR_03_F",2},{"srifle_DMR_03_khaki_F",2},{"srifle_DMR_03_tan_F",2},
-			{"srifle_DMR_03_multicam_F",2},{"srifle_DMR_03_woodland_F",2},{"srifle_DMR_04_F",2},{"srifle_DMR_04_Tan_F",2},{"srifle_DMR_05_blk_F",2},{"srifle_DMR_05_hex_F",2},{"srifle_DMR_05_tan_f",2},{"srifle_DMR_06_camo_F",2},{"srifle_DMR_06_olive_F",2},{"MMG_01_hex_F",2},{"MMG_01_tan_F",2},{"MMG_02_camo_F",2},
-			{"MMG_02_black_F",2},{"MMG_02_sand_F",2}
+			{"srifle_DMR_01_F",1},{"srifle_EBR_F",1},{"srifle_GM6_F",1},{"LMG_Mk200_F",1},{"LMG_Zafir_F",1},{"arifle_Katiba_F",1},{"arifle_Katiba_GL_F",1},{"arifle_Mk20_F",1},
+			{"arifle_Mk20_plain_F",1},{"arifle_Mk20C_F",1},{"arifle_Mk20C_plain_F",1},{"arifle_Mk20_GL_F",1},{"arifle_Mk20_GL_plain_F",1},{"arifle_MXC_F",1},{"arifle_MX_F",1},
+			{"arifle_MX_GL_F",1},{"arifle_MX_SW_F",1},{"arifle_MXM_F",1},{"arifle_MXC_Black_F",1},{"arifle_MX_Black_F",1},{"arifle_MX_GL_Black_F",1},{"arifle_MX_SW_Black_F",1},
+			{"arifle_MXM_Black_F",1},{"arifle_SDAR_F",1},{"arifle_TRG21_F",1},{"arifle_TRG20_F",1},{"arifle_TRG21_GL_F",1},{"SMG_01_F",1},{"SMG_02_F",1},{"srifle_GM6_camo_F",1},
+			{"srifle_LRR_camo_F",1},{"srifle_DMR_02_F",1},{"srifle_DMR_02_camo_F",1},{"srifle_DMR_02_sniper_F",1},{"srifle_DMR_03_F",1},{"srifle_DMR_03_khaki_F",1},{"srifle_DMR_03_tan_F",1},
+			{"srifle_DMR_03_multicam_F",1},{"srifle_DMR_03_woodland_F",1},{"srifle_DMR_04_F",1},{"srifle_DMR_04_Tan_F",1},{"srifle_DMR_05_blk_F",1},{"srifle_DMR_05_hex_F",1},
+			{"srifle_DMR_05_tan_f",1},{"srifle_DMR_06_camo_F",1},{"srifle_DMR_06_olive_F",1},{"MMG_01_hex_F",1},{"MMG_01_tan_F",1},{"MMG_02_camo_F",1},{"MMG_02_black_F",1},{"MMG_02_sand_F",1}
 		};
 
 		maxSecondarySlots = 4; // Maximum number of secondary weapons to be in each loot crate
 		minSecondarySlots = 0; // Minimum number of secondary weapons to be in each loot crate
 		secondaryWeaponLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
-			{"hgun_ACPC2_F",3},{"hgun_P07_F",3},{"hgun_Pistol_heavy_01_F",3},{"hgun_Pistol_heavy_02_F",3},{"hgun_Rook40_F",3}
+			{"hgun_ACPC2_F",1},{"hgun_P07_F",1},{"hgun_Pistol_heavy_01_F",1},{"hgun_Pistol_heavy_02_F",1},{"hgun_Rook40_F",1}
 		};
 
 		maxMagSlots = 5; // Maximum number of magazine slots in each loot crate
 		minMagSlots = 1; // Minimum number of magazine slots in each loot crate
 		magazinesLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
-			{"30Rnd_556x45_Stanag",20},{"30Rnd_556x45_Stanag_Tracer_Red",20},{"30Rnd_556x45_Stanag_Tracer_Green",20},
-			{"30Rnd_556x45_Stanag_Tracer_Yellow",20},{"30Rnd_65x39_caseless_mag",20},{"30Rnd_65x39_caseless_green",20},{"30Rnd_65x39_caseless_mag_Tracer",20},
-			{"30Rnd_65x39_caseless_green_mag_Tracer",20},{"20Rnd_762x51_Mag",20},{"7Rnd_408_Mag",20},{"5Rnd_127x108_Mag",20},{"100Rnd_65x39_caseless_mag",20},
-			{"100Rnd_65x39_caseless_mag_Tracer",20},{"200Rnd_65x39_cased_Box",20},{"200Rnd_65x39_cased_Box_Tracer",20},{"30Rnd_9x21_Mag",20},{"16Rnd_9x21_Mag",20},
-			{"30Rnd_45ACP_Mag_SMG_01",20},{"30Rnd_45ACP_Mag_SMG_01_Tracer_Green",20},{"9Rnd_45ACP_Mag",20},{"150Rnd_762x51_Box",20},{"150Rnd_762x51_Box_Tracer",20},
-			{"150Rnd_762x54_Box",20},{"150Rnd_762x54_Box_Tracer",20},{"11Rnd_45ACP_Mag",20},{"6Rnd_45ACP_Cylinder",20},{"10Rnd_762x51_Mag",20},{"10Rnd_762x54_Mag",20},
-			{"5Rnd_127x108_APDS_Mag",20},{"10Rnd_338_Mag",20},{"130Rnd_338_Mag",20},{"10Rnd_127x54_Mag",20},{"150Rnd_93x64_Mag",20},{"10Rnd_93x64_DMR_05_Mag",20}
+			{"30Rnd_556x45_Stanag",5},{"30Rnd_556x45_Stanag_Tracer_Red",5},{"30Rnd_556x45_Stanag_Tracer_Green",5},
+			{"30Rnd_556x45_Stanag_Tracer_Yellow",5},{"30Rnd_65x39_caseless_mag",5},{"30Rnd_65x39_caseless_green",5},{"30Rnd_65x39_caseless_mag_Tracer",5},
+			{"30Rnd_65x39_caseless_green_mag_Tracer",5},{"20Rnd_762x51_Mag",5},{"7Rnd_408_Mag",5},{"5Rnd_127x108_Mag",5},{"100Rnd_65x39_caseless_mag",5},
+			{"100Rnd_65x39_caseless_mag_Tracer",5},{"200Rnd_65x39_cased_Box",5},{"200Rnd_65x39_cased_Box_Tracer",5},{"30Rnd_9x21_Mag",5},{"16Rnd_9x21_Mag",5},
+			{"30Rnd_45ACP_Mag_SMG_01",5},{"30Rnd_45ACP_Mag_SMG_01_Tracer_Green",5},{"9Rnd_45ACP_Mag",5},{"150Rnd_762x51_Box",5},{"150Rnd_762x51_Box_Tracer",5},
+			{"150Rnd_762x54_Box",5},{"150Rnd_762x54_Box_Tracer",5},{"11Rnd_45ACP_Mag",5},{"6Rnd_45ACP_Cylinder",5},{"10Rnd_762x51_Mag",5},{"10Rnd_762x54_Mag",5},
+			{"5Rnd_127x108_APDS_Mag",5},{"10Rnd_338_Mag",5},{"130Rnd_338_Mag",5},{"10Rnd_127x54_Mag",5},{"150Rnd_93x64_Mag",5},{"10Rnd_93x64_DMR_05_Mag",5}
 		};
 
 		maxAttSlots = 4; // Maximum number of attachment slots in each loot crate
 		minAttSlots = 0; // Minimum number of attachment slots in each loot crate
 		attachmentsLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
-			{"ItemGPS",5},{"ItemRadio",4},{"ItemMap",6},{"MineDetector",1},{"Binocular",4},{"Rangefinder",2},{"Medikit",3},{"ToolKit",1},
-			{"muzzle_snds_H",2},{"muzzle_snds_L",2},{"muzzle_snds_M",2},{"muzzle_snds_B",2},{"muzzle_snds_H_MG",2},{"muzzle_snds_H_SW",2},
-			{"optic_Arco",3},{"optic_Aco",3},{"optic_ACO_grn",3},{"optic_Aco_smg",3},{"optic_ACO_grn_smg",3},{"optic_Holosight",3},
-			{"optic_Holosight_smg",3},{"optic_SOS",3},{"acc_flashlight",3},{"acc_pointer_IR",3},{"optic_MRCO",3},{"muzzle_snds_acp",3},
-			{"optic_NVS",3},{"optic_DMS",3},{"optic_Yorris",2},{"optic_MRD",2},{"optic_LRPS",3},{"muzzle_snds_338_black",3},{"muzzle_snds_338_green",3},
-			{"muzzle_snds_338_sand",3},{"muzzle_snds_93mmg",3},{"muzzle_snds_93mmg_tan",3},{"optic_AMS",3},{"optic_AMS_khk",3},{"bipod_03_F_oli",3},
-			{"optic_AMS_snd",3},{"optic_KHS_blk",3},{"optic_KHS_hex",3},{"optic_KHS_old",3},{"optic_KHS_tan",3},{"bipod_01_F_snd",3},
-			{"bipod_01_F_blk",3},{"bipod_01_F_mtp",3},{"bipod_02_F_blk",3},{"bipod_02_F_tan",3},{"bipod_02_F_hex",3},{"bipod_03_F_blk",3}
+			{"ItemGPS",1},{"ItemRadio",1},{"ItemMap",1},{"MineDetector",1},{"Binocular",1},{"Rangefinder",1},{"Medikit",1},{"ToolKit",1},
+			{"muzzle_snds_H",1},{"muzzle_snds_L",1},{"muzzle_snds_M",1},{"muzzle_snds_B",1},{"muzzle_snds_H_MG",1},{"muzzle_snds_H_SW",1},
+			{"optic_Arco",1},{"optic_Aco",1},{"optic_ACO_grn",1},{"optic_Aco_smg",1},{"optic_ACO_grn_smg",1},{"optic_Holosight",1},
+			{"optic_Holosight_smg",1},{"optic_SOS",1},{"acc_flashlight",1},{"acc_pointer_IR",1},{"optic_MRCO",1},{"muzzle_snds_acp",1},
+			{"optic_NVS",1},{"optic_DMS",1},{"optic_Yorris",1},{"optic_MRD",1},{"optic_LRPS",1},{"muzzle_snds_338_black",1},{"muzzle_snds_338_green",1},
+			{"muzzle_snds_338_sand",1},{"muzzle_snds_93mmg",1},{"muzzle_snds_93mmg_tan",1},{"optic_AMS",1},{"optic_AMS_khk",1},{"bipod_03_F_oli",1},
+			{"optic_AMS_snd",1},{"optic_KHS_blk",1},{"optic_KHS_hex",1},{"optic_KHS_old",1},{"optic_KHS_tan",1},{"bipod_01_F_snd",1},
+			{"bipod_01_F_blk",1},{"bipod_01_F_mtp",1},{"bipod_02_F_blk",1},{"bipod_02_F_tan",1},{"bipod_02_F_hex",1},{"bipod_03_F_blk",1}
 		};
 
 		maxItemSlots = 5; // Maximum number of attachment slots in each loot crate
 		minItemSlots = 0; // Minimum number of attachment slots in each loot crate
 		itemsLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DECIMALS.
-			{"Exile_Item_Flag",3},{"Exile_Item_FuelCanisterFull",2},{"Exile_Item_FuelCanisterEmpty",1},{"Exile_Item_InstaDoc",4},{"Exile_Item_Matches",3},{"Exile_Item_PlasticBottleFreshWater",5}
+			{"Exile_Item_Flag",1},{"Exile_Item_FuelCanisterFull",1},{"Exile_Item_FuelCanisterEmpty",1},{"Exile_Item_InstaDoc",3},{"Exile_Item_Matches",2},
+			{"Exile_Item_PlasticBottleFreshWater",5}
 		};
 
 		maxVestSlots = 2; // Maximum number of vest slots in each loot crate

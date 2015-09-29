@@ -36,10 +36,17 @@ if (VEMF_invasCount < _maxInvasions) then
 		{
 			if (_useMissionMarker isEqualTo 1) then
 			{ // Create/place the marker if enabled
-				_marker = createMarker [format["VEMF_DynaLocInva_ID%1", random 9000], (_loc select 1)];
-				_marker setMarkerShape "ICON";
-				_marker setMarkerType "o_inf";
-				_marker setMarkerColor "ColorBlack";
+				_circle = createMarker [format["VEMF_DynaLocInvaCircle_ID%1", random 9000], (_loc select 1)];
+				_circle setMarkerShape "ELLIPSE";
+				_circle setMarkerColor "ColorRed";
+                _circle setMarkerBrush "Solid";
+                _circle setMarkerSize [150,150];
+
+				_dot = createMarker [format["VEMF_DynaLocInvaDot_ID%1", random 9000], (_loc select 1)];
+				_dot setMarkerShape "ICON";
+				_dot setMarkerType "mil_dot";
+				_dot setMarkerColor "ColorBlack";
+                _dot setMarkerText "Invasion";
 			};
 			// Usage: POSITION, Radius
 			_playerNear = [_loc select 1, 800] call VEMF_fnc_waitForPlayers;
@@ -137,10 +144,14 @@ if (VEMF_invasCount < _maxInvasions) then
 								waitUntil { uiSleep 1; (((getPos _crate) select 2) < 7) };
 								detach _crate;
 							};
-							if not isNil"_marker" then
+							if not isNil"_circle" then
 							{
-								deleteMarker _marker
+								deleteMarker _circle
 							};
+							if not isNil"_dot" then
+                            {
+                                deleteMarker _dot
+                            };
 							VEMF_invasCount = VEMF_invasCount - 1;
 							VEMF_missionCount = VEMF_missionCount - 1;
 
@@ -202,10 +213,14 @@ if (VEMF_invasCount < _maxInvasions) then
 						if not _completeMsg then
 						{
 							["DLI", 0, "Mission success broadcast returned false."] call VEMF_fnc_log;
-							if not isNil"_marker" then
-							{
-								deleteMarker _marker
-							};
+							if not isNil"_circle" then
+                            {
+                                deleteMarker _circle
+                            };
+                            if not isNil"_dot" then
+                            {
+                                deleteMarker _dot
+                            };
 							VEMF_invasCount = VEMF_invasCount - 1;
 							VEMF_missionCount = VEMF_missionCount - 1;
 						};
@@ -214,10 +229,14 @@ if (VEMF_invasCount < _maxInvasions) then
 				if isNil"_spawned" then
 				{
 					["DLI", 0, format["Failed to spawn AI in %1", _locName]] call VEMF_fnc_log;
-					if not isNil"_marker" then
-					{
-						deleteMarker _marker
-					};
+					if not isNil"_circle" then
+                    {
+                        deleteMarker _circle
+                    };
+                    if not isNil"_dot" then
+                    {
+                        deleteMarker _dot
+                    };
 					VEMF_invasCount = VEMF_invasCount - 1;
 					VEMF_missionCount = VEMF_missionCount - 1;
 				};
@@ -225,10 +244,14 @@ if (VEMF_invasCount < _maxInvasions) then
 			if not _playerNear then
 			{
 				["DLI", 1, format["Invasion of %1 timed out.", _locName]] call VEMF_fnc_log;
-				if not isNil"_marker" then
-				{
-					deleteMarker _marker
-				};
+				if not isNil"_circle" then
+                {
+                    deleteMarker _circle
+                };
+                if not isNil"_dot" then
+                {
+                    deleteMarker _dot
+                };
 				VEMF_invasCount = VEMF_invasCount - 1;
 				VEMF_missionCount = VEMF_missionCount - 1;
 			};
