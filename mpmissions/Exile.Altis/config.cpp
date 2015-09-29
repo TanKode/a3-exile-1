@@ -1611,12 +1611,6 @@ class CfgFlags
 		texture = "\A3\Data_F\Flags\flag_us_co.paa";
 		uid = "";
 	};
-	class OMNI
-	{
-		name = "OMNI";
-		texture = "Flags\flag_omni.paa";
-		uid = "";
-	};
 	class YTUBE
 	{
 		name = "YouTube";
