@@ -23,6 +23,7 @@ asm.ini
 *.pbo
 *.dll
 *.txt
+*.vdf
 
 !ARMA_BAN.dll
 !ARMA_LOAD.dll
