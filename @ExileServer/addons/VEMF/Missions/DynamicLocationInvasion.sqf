@@ -40,7 +40,7 @@ if (VEMF_invasCount < _maxInvasions) then
 				_circle setMarkerShape "ELLIPSE";
 				_circle setMarkerColor "ColorRed";
                 _circle setMarkerBrush "Solid";
-                _circle setMarkerSize [150,150];
+                _circle setMarkerSize [250,250];
 
 				_dot = createMarker [format["VEMF_DynaLocInvaDot_ID%1", random 9000], (_loc select 1)];
 				_dot setMarkerShape "ICON";
