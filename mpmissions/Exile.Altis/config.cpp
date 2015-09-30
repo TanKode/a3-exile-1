@@ -1324,28 +1324,28 @@ class CfgExileArsenal
 	class Exile_Chopper_Hummingbird_Civillian_Vrana				{ quality = 1; price = 5000; };
 	class Exile_Chopper_Hummingbird_Civillian_Wasp				{ quality = 1; price = 5000; };
 	class Exile_Chopper_Hummingbird_Civillian_Wave				{ quality = 1; price = 5000; };
-	class Exile_Chopper_Hummingbird_Green			            { quality = 1; price = 6500; };
+	class Exile_Chopper_Hummingbird_Green			            { quality = 1; price = 7500; };
 
-	class Exile_Chopper_Hellcat_Green				            { quality = 1; price = 7000; };
-	class Exile_Chopper_Hellcat_FIA					            { quality = 1; price = 7000; };
+	class Exile_Chopper_Hellcat_Green				            { quality = 1; price = 10000; };
+	class Exile_Chopper_Hellcat_FIA					            { quality = 1; price = 10000; };
 
-	class Exile_Chopper_Huron_Black								{ quality = 1; price = 10000; };
-	class Exile_Chopper_Huron_Green								{ quality = 1; price = 10000; };
+	class Exile_Chopper_Orca_CSAT								{ quality = 1; price = 12500; };
+	class Exile_Chopper_Orca_Black								{ quality = 1; price = 12500; };
+	class Exile_Chopper_Orca_BlackCustom						{ quality = 1; price = 12500; };
 
-	class Exile_Chopper_Mohawk_FIA								{ quality = 1; price = 9000; };
+	class Exile_Chopper_Taru_Transport_CSAT						{ quality = 1; price = 15000; };
+	class Exile_Chopper_Taru_Transport_Black					{ quality = 1; price = 15000; };
+	class Exile_Chopper_Taru_CSAT								{ quality = 1; price = 15000; };
+	class Exile_Chopper_Taru_Black								{ quality = 1; price = 15000; };
+	class Exile_Chopper_Taru_Covered_CSAT						{ quality = 1; price = 15000; };
+	class Exile_Chopper_Taru_Covered_Black						{ quality = 1; price = 15000; };
 
-	class Exile_Chopper_Orca_CSAT								{ quality = 1; price = 7000; };
-	class Exile_Chopper_Orca_Black								{ quality = 1; price = 7000; };
-	class Exile_Chopper_Orca_BlackCustom						{ quality = 1; price = 7000; };
+	class Exile_Chopper_Mohawk_FIA								{ quality = 1; price = 17500; };
 
-	class Exile_Chopper_Taru_Transport_CSAT						{ quality = 1; price = 8000; };
-	class Exile_Chopper_Taru_Transport_Black					{ quality = 1; price = 8000; };
-	class Exile_Chopper_Taru_CSAT								{ quality = 1; price = 8200; };
-	class Exile_Chopper_Taru_Black								{ quality = 1; price = 8200; };
-	class Exile_Chopper_Taru_Covered_CSAT						{ quality = 1; price = 8400; };
-	class Exile_Chopper_Taru_Covered_Black						{ quality = 1; price = 8400; };
+	class Exile_Chopper_Huron_Black								{ quality = 1; price = 20000; };
+	class Exile_Chopper_Huron_Green								{ quality = 1; price = 20000; };
 
-	class Exile_Plane_Cessna									{ quality = 1; price = 4000; };
+	class Exile_Plane_Cessna									{ quality = 1; price = 10000; };
 
 // LAND
 
