@@ -2374,7 +2374,6 @@ class CfgTraderCategories
 			"Exile_Car_Offroad_Rusty3",
 			"Exile_Car_Offroad_Repair_Civillian",
 			"Exile_Car_Offroad_Armed_Guerilla01",
-			"Exile_Car_Strider",
 			"Exile_Car_Hunter",
 			"Exile_Car_Ifrit"
 		};
