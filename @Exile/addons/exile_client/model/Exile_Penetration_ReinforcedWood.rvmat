@@ -1,0 +1,9 @@
+surfaceInfo = "exile_client\model\Exile_Penetration_Wood.bisurf";
+ambient[] = {0.5,0.25,0,1.0};
+diffuse[] = {0.5,0.25,0,1.0};
+forcedDiffuse[] = {0,0,0,0};
+emmisive[] = {0,0,0,1};
+specular[] = {0,0,0,1};
+specularPower = 1;
+PixelShaderID = "Normal";
+VertexShaderID = "Basic";

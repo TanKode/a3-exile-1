@@ -1490,6 +1490,22 @@ class CfgExileArsenal
 	class Exile_Car_Hunter 								{ quality = 1; price = 10000; };
 	class Exile_Car_Ifrit 								{ quality = 1; price = 10000; };
 	class Exile_Car_Strider 							{ quality = 1; price = 10000; };
+
+// PODS
+
+    class Land_Pod_Heli_Transport_04_covered_F          { quality = 1; price = 1000; };
+    class Land_Pod_Heli_Transport_04_fuel_F             { quality = 1; price = 1000; };
+    class Land_Pod_Heli_Transport_04_box_F              { quality = 1; price = 1000; };
+    class Land_Pod_Heli_Transport_04_repair_F           { quality = 1; price = 1000; };
+    class Land_Pod_Heli_Transport_04_medevac_F          { quality = 1; price = 1000; };
+    class Land_Pod_Heli_Transport_04_bench_F            { quality = 1; price = 1000; };
+
+    class B_Slingload_01_Cargo_F                        { quality = 1; price = 1000; };
+    class B_Slingload_01_Fuel_F                         { quality = 1; price = 1000; };
+    class B_Slingload_01_Ammo_F                         { quality = 1; price = 1000; };
+    class B_Slingload_01_Medevac_F                      { quality = 1; price = 1000; };
+    class B_Slingload_01_Repair_F                       { quality = 1; price = 1000; };
+
 };
 class CfgExileCustomCode 
 {
@@ -1595,16 +1611,16 @@ class CfgTerritories
 	// Level 1 is allways for Pop Tabs, >= 2 for Respect
 	prices[] = 
 	{
-		{5000,	15}, // Level 1
-		{10000,	30}, // Level 2 
-		{15000,	45}, // Level 3
-		{20000,	60}, // Level 4
-		{25000,	75}, // Level 5
-		{30000,	90}, // Level 6
-		{35000,	105}, // Level 7
-		{40000,	120}, // Level 8
-		{45000,	135}, // Level 9
-		{50000,	150}  // Level 10
+		{15000,	15}, // Level 1
+		{30000,	30}, // Level 2
+		{45000,	45}, // Level 3
+		{60000, 60}, // Level 4
+		{75000,	75}, // Level 5
+		{90000,	90}, // Level 6
+		{105000,105}, // Level 7
+		{120000,120}, // Level 8
+		{135000,135}, // Level 9
+		{150000,150}  // Level 10
 	};
 
 	noNeedForTerritory[] = 
@@ -1619,8 +1635,8 @@ class CfgTerritories
 	protectionPeriod = 21; 
 
 	// Amount of pop tabs or respect per object to pay
-	popTabAmountPerObject = 10;
-	respectAmountPerObject = 5;
+	popTabAmountPerObject = 20;
+	respectAmountPerObject = 10;
 };
 class CfgTraderCategories 
 {
@@ -2441,6 +2457,26 @@ class CfgTraderCategories
 			"Exile_Plane_Cessna"
 		};
 	};
+
+	class Pods
+	{
+	    name = "Pods";
+	    icon = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemacc_ca.paa";
+	    items[] =
+	    {
+	        "Land_Pod_Heli_Transport_04_covered_F",
+	        "Land_Pod_Heli_Transport_04_fuel_F",
+	        "Land_Pod_Heli_Transport_04_box_F";
+	        "Land_Pod_Heli_Transport_04_repair_F",
+	        "Land_Pod_Heli_Transport_04_medevac_F",
+	        "Land_Pod_Heli_Transport_04_bench_F",
+	        "B_Slingload_01_Cargo_F",
+	        "B_Slingload_01_Fuel_F",
+	        "B_Slingload_01_Ammo_F",
+	        "B_Slingload_01_Medevac_F",
+	        "B_Slingload_01_Repair_F"
+	    };
+	};
 };
 
 class CfgTraders
@@ -2554,7 +2590,8 @@ class CfgTraders
 		categories[] = 
 		{
 			"Choppers", 
-			"Planes"
+			"Planes",
+			"Pods"
 		};
 	};
 

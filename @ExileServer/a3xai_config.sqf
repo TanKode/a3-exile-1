@@ -493,55 +493,65 @@ A3XAI_UGVDetectChance = 0.80;
 */
 
 //AI skill settings level 0 (Skill, Minimum skill, Maximum skill). Defaults: Accuracy 0.05-0.10, Others 0.30-0.50
-A3XAI_skill0 = [	
-	["aimingAccuracy",0.05,0.10],
-	["aimingShake",0.30,0.50],
-	["aimingSpeed",0.30,0.50],
-	["spotDistance",0.30,0.50],
-	["spotTime",0.30,0.50],
-	["courage",0.30,0.50],
-	["reloadSpeed",0.30,0.50],
-	["commanding",0.30,0.50],
-	["general",0.30,0.50]
+_skillRange = 0.20;
+_skill0Min = 0.20;
+_skill0Max = _skill0Min+_skillRange;
+_skill1Min = 0.40;
+_skill1Max = _skill1Min+_skillRange;
+_skill2Min = 0.60;
+_skill2Max = _skill2Min+_skillRange;
+_skill3Min = 0.80;
+_skill3Max = _skill3Max+_skillRange;
+
+A3XAI_skill0 = [
+	["aimingAccuracy",	_skill0Min-0.1,_skill0Max-0.1],
+	["aimingShake",		_skill0Min,_skill0Max],
+	["aimingSpeed",		_skill0Min,_skill0Max],
+	["spotDistance",	_skill0Min,_skill0Max],
+	["spotTime",		_skill0Min,_skill0Max],
+	["courage",			_skill0Min,_skill0Max],
+	["reloadSpeed",		_skill0Min,_skill0Max],
+	["commanding",		_skill0Min,_skill0Max],
+	["general",			_skill0Min,_skill0Max]
 ];
 
 //AI skill settings level 1 (Skill, Minimum skill, Maximum skill). Defaults: Accuracy 0.10-0.15, Others 0.40-0.60
-A3XAI_skill1 = [	
-	["aimingAccuracy",0.10,0.15],
-	["aimingShake",0.40,0.60],
-	["aimingSpeed",0.40,0.60],
-	["spotDistance",0.40,0.60],
-	["spotTime",0.40,0.60],
-	["courage",0.40,0.60],
-	["reloadSpeed",0.40,0.60],
-	["commanding",0.40,0.60],
-	["general",0.40,0.60]
+A3XAI_skill1 = [
+	["aimingAccuracy",	_skill1Min-0.1,_skill1Max-0.1],
+	["aimingShake",		_skill1Min,_skill1Max],
+	["aimingSpeed",		_skill1Min,_skill1Max],
+	["spotDistance",	_skill1Min,_skill1Max],
+	["spotTime",		_skill1Min,_skill1Max],
+	["courage",			_skill1Min,_skill1Max],
+	["reloadSpeed",		_skill1Min,_skill1Max],
+	["commanding",		_skill1Min,_skill1Max],
+	["general",			_skill1Min,_skill1Max]
 ];
 
 //AI skill settings level 2 (Skill, Minimum skill, Maximum skill). Defaults: Accuracy 0.15-0.20, Others 0.50-0.70
-A3XAI_skill2 = [	
-	["aimingAccuracy",0.15,0.20],
-	["aimingShake",0.50,0.70],
-	["aimingSpeed",0.50,0.70],
-	["spotDistance",0.50,0.70],
-	["spotTime",0.50,0.70],
-	["courage",0.50,0.70],
-	["reloadSpeed",0.50,0.70],
-	["commanding",0.50,0.70],
-	["general",0.50,0.70]
+A3XAI_skill2 = [
+	["aimingAccuracy",	_skill2Min-0.1,_skill2Max-0.1],
+	["aimingShake",		_skill2Min,_skill2Max],
+	["aimingSpeed",		_skill2Min,_skill2Max],
+	["spotDistance",	_skill2Min,_skill2Max],
+	["spotTime",		_skill2Min,_skill2Max],
+	["courage",			_skill2Min,_skill2Max],
+	["reloadSpeed",		_skill2Min,_skill2Max],
+	["commanding",		_skill2Min,_skill2Max],
+	["general",			_skill2Min,_skill2Max]
 ];
 
 //AI skill settings level 3 (Skill, Minimum skill, Maximum skill). Defaults: Accuracy 0.20-0.25, Others 0.60-0.80
-A3XAI_skill3 = [	
-	["aimingAccuracy",0.20,0.25],
-	["aimingShake",0.60,0.80],
-	["aimingSpeed",0.60,0.80],
-	["spotDistance",0.60,0.80],
-	["spotTime",0.60,0.80],
-	["courage",0.60,0.80],
-	["reloadSpeed",0.60,0.80],
-	["commanding",0.60,0.80],
-	["general",0.60,0.80]
+A3XAI_skill3 = [
+	["aimingAccuracy",	_skill3Min-0.1,_skill3Max-0.1],
+	["aimingShake",		_skill3Min,_skill3Max],
+	["aimingSpeed",		_skill3Min,_skill3Max],
+	["spotDistance",	_skill3Min,_skill3Max],
+	["spotTime",		_skill3Min,_skill3Max],
+	["courage",			_skill3Min,_skill3Max],
+	["reloadSpeed",		_skill3Min,_skill3Max],
+	["commanding",		_skill3Min,_skill3Max],
+	["general",			_skill3Min,_skill3Max]
 ];
 
 
@@ -627,19 +637,19 @@ A3XAI_lootPullChance3 = 0.80; //Default for level 3 AI: 0.80
 A3XAI_enableRespectRewards = true;
 
 //Respect bonus for kills with Axe
-A3XAI_respect_humiliationBonus = 300;
+A3XAI_respect_humiliationBonus = 100;
 
 //Respect bonus for standard kills
-A3XAI_respect_fraggedBonus = 100;
+A3XAI_respect_fraggedBonus = 50;
 
 //Respect bonus for collision kills by vehicle driver
-A3XAI_respect_roadkillBonus = 500;
+A3XAI_respect_roadkillBonus = 0;
 
 //Respect bonus for kills with vehicle weapons
-A3XAI_respect_vehicleWeaponKillBonus = 400;
+A3XAI_respect_vehicleWeaponKillBonus = 150;
 
 //Respect bonus per kill streak
-A3XAI_respect_killstreakBonus = 50;
+A3XAI_respect_killstreakBonus = 25;
 
 //Respect bonus per 100m distance from target
 A3XAI_respect_per100mBonus = 10;
