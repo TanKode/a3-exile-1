@@ -1537,7 +1537,7 @@ class CfgSettings
 		* smaller the number more vehicles,
 		* you get the point
 		*/
-		vehiclesGridSize = 3000;
+		vehiclesGridSize = 5000;
 
 		/**
 		* Vehicle ammount per grid
@@ -1554,23 +1554,12 @@ class CfgSettings
 		/**
 		* The server will apply random damage up to this value when spawning a vehicle.
 		*/
-		damageChance = 20; // 20% chance for a vehicle HITPOINT to be damaged
+		damageChance = 75; // 20% chance for a vehicle HITPOINT to be damaged
 		maximumDamage = 0.9;
 
 		// Stuff to spawn on water
 		water[] = 
 		{
-			"Exile_Boat_MotorBoat_Police",
-			"Exile_Boat_MotorBoat_Orange",
-			"Exile_Boat_MotorBoat_White",
-			"Exile_Boat_RubberDuck_CSAT",
-			"Exile_Boat_RubberDuck_Digital",
-			"Exile_Boat_RubberDuck_Orange",
-			"Exile_Boat_RubberDuck_Blue",
-			"Exile_Boat_RubberDuck_Black",
-			"Exile_Boat_SDV_CSAT",
-			"Exile_Boat_SDV_Digital",
-			"Exile_Boat_SDV_Grey"
 		};
 
 		// Stuff to spawn on roads
@@ -1588,13 +1577,9 @@ class CfgSettings
 			"Exile_Car_Hatchback_Rusty1",
 			"Exile_Car_Hatchback_Rusty2",
 			"Exile_Car_Hatchback_Rusty3",
-			"Exile_Car_SUV_Red",
 			"Exile_Car_Offroad_Rusty1",
 			"Exile_Car_Offroad_Rusty2",
-			"Exile_Car_Offroad_Rusty3",
-			"Exile_Car_Van_Black",
-			"Exile_Car_Van_Box_Black",
-			"Exile_Car_Van_Fuel_Black"
+			"Exile_Car_Offroad_Rusty3"
 		};
 	};
 
