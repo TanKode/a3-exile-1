@@ -157,14 +157,25 @@ if (isnil "IL_Variables") then
 		"Exile_Car_Van_Box_Guerilla07",
 		"Exile_Car_Van_Box_Guerilla08"
 	];
-	IL_Supported_Vehicles_HEMTT = ["Exile_Car_HEMMT"];
+	IL_Supported_Vehicles_HEMTT =
+	[
+		"Exile_Car_HEMMT",
+		"B_Truck_01_mover_F",
+		"B_Truck_01_transport_F",
+		"B_Truck_01_covered_F"
+	];
 	IL_Supported_Vehicles_KAMAZ = 
 	[
 		"I_Truck_02_covered_F",
 		"I_Truck_02_transport_F",
 		"Exile_Car_Zamak"
 	];
-	IL_Supported_Vehicles_TEMPEST = ["Exile_Car_Tempest"];
+	IL_Supported_Vehicles_TEMPEST =
+	[
+		"Exile_Car_Tempest",
+		"O_Truck_03_transport_F",
+		"O_Truck_03_covered_F"
+	];
 	IL_Supported_Vehicles_MOHAWK = ["Exile_Chopper_Mohawk_FIA"];
 	IL_Supported_Vehicles_CHINOOK = 
 	[
@@ -214,14 +225,25 @@ if (isnil "IL_Variables") then
 		"Exile_Car_Kart_Yellow",
 		"Exile_Car_Kart_Black"
 	];
-	IL_Supported_HEMTT = ["Exile_Car_HEMMT"];
+	IL_Supported_HEMTT =
+	[
+		"Exile_Car_HEMMT",
+		"B_Truck_01_mover_F",
+		"B_Truck_01_transport_F",
+		"B_Truck_01_covered_F"
+	];
 	IL_Supported_KAMAZ = 
 	[
+		"Exile_Car_Zamak",
 		"I_Truck_02_covered_F",
-		"I_Truck_02_transport_F",
-		"Exile_Car_Zamak"
+		"I_Truck_02_transport_F"
 	];
-	IL_Supported_TEMPEST = ["Exile_Car_Tempest"];
+	IL_Supported_TEMPEST =
+	[
+		"Exile_Car_Tempest",
+		"O_Truck_03_transport_F",
+		"O_Truck_03_covered_F"
+	];
 	IL_Supported_Strider = 
 	[
 		"I_MRAP_03_hmg_F",
