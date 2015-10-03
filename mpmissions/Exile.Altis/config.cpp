@@ -2380,9 +2380,17 @@ class CfgTraderCategories
 			"Exile_Car_Van_Black",
 			"Exile_Car_Van_Box_Black",
 			"Exile_Car_Van_Fuel_Black",
-			"Exile_Car_Zamak",
-			"Exile_Car_Tempest",
-			"Exile_Car_HEMMT"
+			"I_Truck_02_transport_F",
+			"I_Truck_02_covered_F",
+			"I_Truck_02_fuel_F",
+			"O_Truck_03_transport_F",
+			"O_Truck_03_covered_F",
+			"O_Truck_03_fuel_F",
+			"B_Truck_01_mover_F"
+			"B_Truck_01_transport_F"
+			"B_Truck_01_covered_F"
+			"B_Truck_01_box_F"
+			"B_Truck_01_fuel_F"
 		};
 	};
 
@@ -2430,7 +2438,6 @@ class CfgTraderCategories
 		icon = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemacc_ca.paa";
 		items[] = 
 		{
-			"Exile_Plane_Cessna"
 		};
 	};
 
