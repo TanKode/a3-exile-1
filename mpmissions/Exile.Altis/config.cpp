@@ -2386,10 +2386,10 @@ class CfgTraderCategories
 			"O_Truck_03_transport_F",
 			"O_Truck_03_covered_F",
 			"O_Truck_03_fuel_F",
-			"B_Truck_01_mover_F"
-			"B_Truck_01_transport_F"
-			"B_Truck_01_covered_F"
-			"B_Truck_01_box_F"
+			"B_Truck_01_mover_F",
+			"B_Truck_01_transport_F",
+			"B_Truck_01_covered_F",
+			"B_Truck_01_box_F",
 			"B_Truck_01_fuel_F"
 		};
 	};
