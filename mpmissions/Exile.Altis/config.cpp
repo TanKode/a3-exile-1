@@ -1347,6 +1347,13 @@ class CfgExileArsenal
 
 	class Exile_Plane_Cessna									{ quality = 1; price = 10000; };
 
+// PODS
+
+    class B_Slingload_01_Cargo_F                        { quality = 1; price = 100000; };
+    class B_Slingload_01_Fuel_F                         { quality = 1; price = 100000; };
+    class B_Slingload_01_Medevac_F                      { quality = 1; price = 100000; };
+    class B_Slingload_01_Repair_F                       { quality = 1; price = 100000; };
+
 // LAND
 
 	class Exile_Bike_OldBike 						    { quality = 1; price = 100; };
@@ -1483,28 +1490,24 @@ class CfgExileArsenal
 	class Exile_Car_Van_Fuel_Guerilla02 				{ quality = 1; price = 10000; };
 	class Exile_Car_Van_Fuel_Guerilla03 				{ quality = 1; price = 10000; };
 
-	class Exile_Car_Zamak 								{ quality = 1; price = 15000; };
-	class Exile_Car_HEMMT 								{ quality = 1; price = 25000; };
-	class Exile_Car_Tempest 							{ quality = 1; price = 25000; };
+    // Exile_Car_Zamak
+	class I_Truck_02_transport_F 						{ quality = 1; price = 15000; };
+	class I_Truck_02_covered_F 							{ quality = 1; price = 20000; };
+	class I_Truck_02_fuel_F 							{ quality = 1; price = 30000; };
+    // Exile_Car_HEMMT
+	class B_Truck_01_mover_F 							{ quality = 1; price = 20000; };
+	class B_Truck_01_transport_F 						{ quality = 1; price = 25000; };
+	class B_Truck_01_covered_F 						    { quality = 1; price = 30000; };
+	class B_Truck_01_box_F 						        { quality = 1; price = 35000; };
+	class B_Truck_01_fuel_F 						    { quality = 1; price = 50000; };
+    // Exile_Car_Tempest
+	class O_Truck_03_transport_F 						{ quality = 1; price = 25000; };
+	class O_Truck_03_covered_F 							{ quality = 1; price = 30000; };
+	class O_Truck_03_fuel_F 							{ quality = 1; price = 50000; };
 
 	class Exile_Car_Hunter 								{ quality = 1; price = 20000; };
 	class Exile_Car_Ifrit 								{ quality = 1; price = 20000; };
 	class Exile_Car_Strider 							{ quality = 1; price = 20000; };
-
-// PODS
-
-    class Land_Pod_Heli_Transport_04_covered_F          { quality = 1; price = 1000; };
-    class Land_Pod_Heli_Transport_04_fuel_F             { quality = 1; price = 1000; };
-    class Land_Pod_Heli_Transport_04_box_F              { quality = 1; price = 1000; };
-    class Land_Pod_Heli_Transport_04_repair_F           { quality = 1; price = 1000; };
-    class Land_Pod_Heli_Transport_04_medevac_F          { quality = 1; price = 1000; };
-    class Land_Pod_Heli_Transport_04_bench_F            { quality = 1; price = 1000; };
-
-    class B_Slingload_01_Cargo_F                        { quality = 1; price = 1000; };
-    class B_Slingload_01_Fuel_F                         { quality = 1; price = 1000; };
-    class B_Slingload_01_Ammo_F                         { quality = 1; price = 1000; };
-    class B_Slingload_01_Medevac_F                      { quality = 1; price = 1000; };
-    class B_Slingload_01_Repair_F                       { quality = 1; price = 1000; };
 
 };
 class CfgExileCustomCode 
@@ -2437,15 +2440,8 @@ class CfgTraderCategories
 	    icon = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\itemacc_ca.paa";
 	    items[] =
 	    {
-	        "Land_Pod_Heli_Transport_04_covered_F",
-	        "Land_Pod_Heli_Transport_04_fuel_F",
-	        "Land_Pod_Heli_Transport_04_box_F";
-	        "Land_Pod_Heli_Transport_04_repair_F",
-	        "Land_Pod_Heli_Transport_04_medevac_F",
-	        "Land_Pod_Heli_Transport_04_bench_F",
 	        "B_Slingload_01_Cargo_F",
 	        "B_Slingload_01_Fuel_F",
-	        "B_Slingload_01_Ammo_F",
 	        "B_Slingload_01_Medevac_F",
 	        "B_Slingload_01_Repair_F"
 	    };
