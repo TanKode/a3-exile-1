@@ -1031,6 +1031,7 @@ class CfgExileArsenal
 	class NVGoggles									{ quality = 2; price = 100; };
 	class NVGoggles_INDEP							{ quality = 2; price = 100; };
 	class NVGoggles_OPFOR							{ quality = 2; price = 100; };
+	class Exile_Item_XM8							{ quality = 2; price = 20; };
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Rebreather
@@ -1135,7 +1136,7 @@ class CfgExileArsenal
 	class 30Rnd_65x39_caseless_green_mag_Tracer 	{ quality = 2; price = 30; };
 	class 30Rnd_65x39_caseless_mag 					{ quality = 1; price = 20; };
 	class 30Rnd_65x39_caseless_mag_Tracer 			{ quality = 2; price = 30; };
-	class 30Rnd_9x21_Mag 							{ quality = 1; price = 10; };
+	class 30Rnd_9x21_Mag 							{ quality = 1; price = 40; };
 	class 5Rnd_127x108_APDS_Mag 					{ quality = 2; price = 50; };
 	class 5Rnd_127x108_Mag 							{ quality = 1; price = 40; };
 	class 6Rnd_45ACP_Cylinder 						{ quality = 1; price = 8; };
@@ -1524,7 +1525,7 @@ class CfgExileCustomCode
 
 		Example:
 
-		ExileClient_util_fusRoDah = "myaddon/myfunction.sqf";
+		ExileClient_util_fusRoDah = "myaddon\myfunction.sqf";
 	*/
 };
 class CfgExileMusic
@@ -1624,13 +1625,30 @@ class CfgTerritories
 		{120000,120}, // Level 8
 		{135000,135}, // Level 9
 		{150000,150}  // Level 10
+		{165000,165}  // Level 11
+		{180000,180}  // Level 12
+		{195000,195}  // Level 13
+		{210000,210}  // Level 14
+		{225000,225}  // Level 15
 	};
 
-	noNeedForTerritory[] = 
-	{
-		"Exile_Construction_CampFire_Preview",
-		"Exile_Construction_CamoTent_Preview"
-	};
+	// A shortcut of the above maximum radius
+	maximumRadius = 225;
+
+	// The above * 2 plus coverving the 20m you can move while placing things
+	minimumDistanceToOtherTerritories = 500;
+
+	/**
+	 * Defines the minimum distance to safe zones / trader cities where players
+	 * cannot build territories
+	 */
+	minimumDistanceToTraderZones = 1000;
+
+	/**
+	 * Defines the minimum distance to spawn zones where players
+	 * cannot build territories
+	 */
+	minimumDistanceToSpawnZones = 1000;
 
 	// Defines the period in days where protection money needs to be payed.
 	// Every time you pay the protection money, the "due date" will be
@@ -2065,7 +2083,8 @@ class CfgTraderCategories
 			"ItemMap",
 			"ItemCompass",
 			"ItemRadio",
-			"ItemWatch"
+			"ItemWatch",
+			"Exile_Item_XM8"
 		};
 	};
 
@@ -2315,27 +2334,6 @@ class CfgTraderCategories
 			"arifle_MXM_F", // MXM 6.5 mm
 			"srifle_EBR_F", // Mk18 ABR 7.62 mm
 		};
-		/*
-            "srifle_DMR_02_camo_F", // MAR-10 .338 (Camo)
-            "srifle_DMR_02_F", // MAR-10 .338 (Black)
-            "srifle_DMR_02_sniper_F", // MAR-10 .338 (Sand)
-            "srifle_DMR_03_F", // Mk-I EMR 7.62mm (Black)
-            "srifle_DMR_03_khaki_F", // Mk-I EMR 7.62mm (Khaki)
-            "srifle_DMR_03_multicam_F", // Mk-I EMR 7.62mm (Camo)
-            "srifle_DMR_03_tan_F", // Mk-I EMR 7.62mm (Sand)
-            "srifle_DMR_03_woodland_F", // Mk-I EMR 7.62mm (Woodland)
-            "srifle_DMR_04_F", // ASP-1 Kir 12.7mm (Black)
-            "srifle_DMR_04_Tan_F", // ASP-1 Kir 12.7mm (Tan)
-            "srifle_DMR_05_blk_F", // Cyrus 9.3mm (Black)
-            "srifle_DMR_05_hex_F", // Cyrus 9.3mm (Hex)
-            "srifle_DMR_05_tan_f", // Cyrus 9.3mm (Tan)
-            "srifle_DMR_06_camo_F", // Mk14 7.62mm (Camo)
-            "srifle_DMR_06_olive_F", // Mk14 7.62mm (Olive)
-            "srifle_GM6_camo_F", // GM6 Lynx 12.7 mm (Camo)
-            "srifle_GM6_F", // GM6 Lynx 12.7 mm
-            "srifle_LRR_camo_F", // M320 LRR .408 (Camo)
-            "srifle_LRR_F" // M320 LRR .408
-		*/
 	};
 
 	class Bikes

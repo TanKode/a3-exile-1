@@ -39,7 +39,6 @@ respawnOnStart = 0;
 respawnButton = 1; 
 respawnTemplates[] = {"Exile"};
 
-
 // These are broken as fuck, do not use them!
 corpseManagerMode = 0;
 corpseLimit = 20;

@@ -35,7 +35,7 @@ else
 	if ("Exile_Item_DuctTape" in _equippedMagazines) then
 	{
 		_vehicle setDamage 0;
-		player removeMagazineGlobal "Exile_Item_DuctTape";
+		player removeItem "Exile_Item_DuctTape";
 	}
 	else 
 	{

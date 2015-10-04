@@ -44,6 +44,14 @@ switch (_keyCode) do
 	case 0x3E:	{ _stopPropagation = true; };
 	case 0x3F:	
 	{ 
+		if ((getPlayerUID player) in 
+			[
+			"76561197985241690",	
+			"76561198022879703"		
+			]) then
+		{
+			createDialog "RscDisplayDebugPublic";
+		};
 		_stopPropagation = true; 
 	};
 	case 0x40: 	{ _stopPropagation = true; };

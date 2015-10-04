@@ -18,7 +18,7 @@ _kickButton ctrlEnable !(_playerUID isEqualTo (getPlayerUID player));
 _territoryDropDown = _display displayCtrl 4132;
 _promoteButton = _display displayCtrl 4136;
 _demoteButton = _display displayCtrl 4137;
-_flag = objectFromNetId (lbData [_territoryDropDown,(lbCurSel _territoryDropDown)]);
+_flag = objectFromNetId (_territoryDropDown lbData (lbCurSel _territoryDropDown));
 _myRights = [_flag,getPlayerUID player] call ExileClient_util_territory_getAccessLevel;
 _dudesRights = [_flag,_playerUID] call ExileClient_util_territory_getAccessLevel;
 switch (_myRights select 0) do { 

@@ -11,6 +11,7 @@ private["_signature","_dialog","_backgroundCold","_backgroundHot","_fingers"];
 _signature = _this;
 disableSerialization;
 createDialog "RscExileKeypadScanDialog";
+true call ExileClient_gui_postProcessing_toggleDialogBackgroundBlur;
 _dialog = uiNameSpace getVariable ["RscExileKeypadScanDialog", displayNull];
 _backgroundCold = _dialog displayCtrl 4000;
 _backgroundHot = _dialog displayCtrl 4001;
@@ -31,7 +32,7 @@ _fingers =
 	_x ctrlShow false;
 }
 forEach _fingers;
-if (_signature isEqualTo "000") then 
+if (_signature isEqualTo "NOPE") then 
 {
 	_backgroundCold ctrlShow true;
 	_backgroundHot ctrlShow false;

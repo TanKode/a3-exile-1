@@ -7,19 +7,13 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_return","_isConfig"];
-_return = false;
-_isConfig = 
-	"
-	isText(_x >> 'upgradeObject')
- 	&& 
- 	getText(_x >> 'staticObject') isEqualTo (typeOf ExileClientInteractionObject)
- 	"
- 	configClasses 
- 	(configFile >> 'CfgConstruction');
- if!(_isConfig isEqualTo [])then
- {
- 	_isConfig = _isConfig select 0;
- 	_return = isClass _isConfig;
- };
- _return
+private["_showUpgradeMenu","_constructionConfigs","_constructionConfig","_upgradeObject"];
+_showUpgradeMenu = false;
+_constructionConfigs = "(getText (_x >> 'staticObject')) isEqualTo (typeOf ExileClientInteractionObject)" configClasses (configFile >> "CfgConstruction");
+if !(_constructionConfigs isEqualTo []) then 
+{
+	_constructionConfig = _constructionConfigs select 0;
+	_upgradeObject = getText (_constructionConfig >> "upgradeObject");
+	_showUpgradeMenu = !(_upgradeObject isEqualTo "");
+};
+ _showUpgradeMenu

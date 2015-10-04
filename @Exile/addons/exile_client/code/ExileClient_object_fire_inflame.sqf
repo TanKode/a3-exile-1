@@ -11,7 +11,7 @@ private["_fire"];
 _fire = _this;
 if ("Exile_Item_Matches" in (magazines player)) then
 {
-	[player, "Exile_Item_Matches", 1] call ExileClient_util_gear_repackMagazines;
+	[player, "Exile_Item_Matches", -1] call ExileClient_util_gear_repackMagazines;
 	_fire inflame true;
 }
 else 

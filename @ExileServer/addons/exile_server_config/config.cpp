@@ -1039,7 +1039,7 @@ class CfgLootTables
 			{2.75, 	"Exile_Item_DuctTape"},
 			{2.8, 	"Exile_Item_PortableGeneratorKit"},
 			{2.85, 	"Exile_Item_FloodLightKit"},
-            {2.86, "Exile_Item_ThermalScannerPro"}
+            {2.86,  "Exile_Item_ThermalScannerPro"}
 		};
 	};
 
@@ -1497,7 +1497,7 @@ class CfgSettings
 		/**
 		 * Parachute drop height in meters. 
 		 */
-		parachuteDropHeight = 400;
+		parachuteDropHeight = 1000;
 
 		/**
 		 * Number of minutes where a fresh spawned player remains in the
@@ -1792,10 +1792,10 @@ class CfgSettings
 	class Time
 	{
 		// Uses Dedicated Server time as ingame Time
-		useRealTime = 1;
+		useRealTime = 0;
 
 		// Will overide RealTime
-		useStaticTime = 0;
+		useStaticTime = 1;
 
 		// time in ARMA FORMAT << CONFIG
 		// https://community.bistudio.com/wiki/setDate
@@ -1858,6 +1858,6 @@ class CfgSettings
 
 			Only use full minutes here. Value like 5.5 have not been tested.
 		*/
-		restartWarrningTime[] = {15, 10, 5, 3};
+		restartWarningTime[] = {15, 10, 5, 3};
 	};
 };

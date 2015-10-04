@@ -90,11 +90,11 @@ if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> 
 	{
 		playSound (_configSounds select (floor (random _numberOfConfigSounds)));
 	};
-	player removeMagazineGlobal _itemClassName;
+	player removeItem _itemClassName;
 	_returnItemClass = getText (_consumingConfig >> "returnedItem");
 	if( _returnItemClass != "" ) then
 	{
-		player addMagazine [_returnItemClass, getNumber (configFile >> "CfgMagazines" >> _returnItemClass >> "count")];
+		player addItem _returnItemClass;
 	};
 	if( _feedbackString != "") then
 	{

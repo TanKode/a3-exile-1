@@ -88,6 +88,7 @@ forEach
 	['ExileClient_gui_keypadDialog_event_onOkayButtonClick', 'exile_client\code\ExileClient_gui_keypadDialog_event_onOkayButtonClick.sqf'],
 	['ExileClient_gui_keypadDialog_event_onUnload', 'exile_client\code\ExileClient_gui_keypadDialog_event_onUnload.sqf'],
 	['ExileClient_gui_keypadScanDialog_show', 'exile_client\code\ExileClient_gui_keypadScanDialog_show.sqf'],
+	['ExileClient_gui_keypadScanDialog_event_onUnload', 'exile_client\code\ExileClient_gui_keypadScanDialog_event_onUnload.sqf'],
 	['ExileClient_gui_loadingScreen_updateText', 'exile_client\code\ExileClient_gui_loadingScreen_updateText.sqf'],
 	['ExileClient_gui_loadingScreen_event_onKeyDown', 'exile_client\code\ExileClient_gui_loadingScreen_event_onKeyDown.sqf'],
 	['ExileClient_gui_modelBox_create', 'exile_client\code\ExileClient_gui_modelBox_create.sqf'],

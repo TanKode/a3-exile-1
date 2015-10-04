@@ -26,6 +26,6 @@ if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> 
 	{
 		["InspectingFailedInformation"] call ExileClient_gui_notification_event_addNotification;
 	};
-	player removeMagazineGlobal _itemClassName;
+	player removeItem _itemClassName;
 };
 true

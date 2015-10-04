@@ -86,7 +86,7 @@ if (_metSideConditions) then
 					_componentItemClassName = _x select 1;
 					for "_i" from 1 to _componentQuantity do 
 					{
-						player removeMagazineGlobal _componentItemClassName;
+						player removeItem _componentItemClassName;
 					};
 				}
 				forEach _components;

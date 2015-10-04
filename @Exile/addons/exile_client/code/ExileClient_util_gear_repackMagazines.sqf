@@ -17,13 +17,13 @@ _equippedMagazines = magazinesAmmo _container;
 if (_ammoPerMagazine > 1) then
 {
 	{
-		if ((_x select 0) == _magazineClassName) then
+		if ((_x select 0) isEqualTo _magazineClassName) then
 		{
 			_equippedAmmo = _equippedAmmo + (_x select 1);
 		};
 	}
 	forEach _equippedMagazines;
-	_container removeMagazines _magazineClassName;
+	_container removeItems _magazineClassName;
 	_ammoToRefund = _equippedAmmo + _ammoToChange;
 	while {_ammoToRefund > 0} do
 	{

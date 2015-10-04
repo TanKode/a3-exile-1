@@ -14,7 +14,7 @@ _territoryDropDown = _display displayCtrl 4132;
 _territorySelected = lbCurSel _territoryDropDown;
 _playerListBox = _display displayCtrl 4131;
 _index = lbCurSel _playerListBox;
-_playerUID = lbData [_playerListBox,_index];
-_flagNetID = lbData [_territoryDropDown, _territorySelected]; 
+_playerUID = _playerListBox lbData _index;
+_flagNetID = _territoryDropDown lbData _territorySelected; 
 ["moderationTerritoryRequest", [_flagNetID,_playerUID,_this]] call ExileClient_system_network_send;
 true

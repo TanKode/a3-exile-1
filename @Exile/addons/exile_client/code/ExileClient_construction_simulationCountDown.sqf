@@ -19,7 +19,7 @@ if ((_object isKindOf "Exile_Construction_Abstract_Physics") && _simulatePhysics
 	_vectorUpBefore = vectorUp _object;
 	_startTime = diag_tickTime;
 	player reveal _object; 
-	_object enableSimulationGlobal true;
+	_object enableSimulation true;
 	uiSleep 5;
 	while {!_freezeObjectNow} do 
 	{
@@ -37,12 +37,12 @@ if ((_object isKindOf "Exile_Construction_Abstract_Physics") && _simulatePhysics
 	_distanceMoved = (getPosATL _object) distance _positionBefore;
 	if (_distanceMoved < 0.02) then
 	{
-		_object enableSimulationGlobal false;
+		_object enableSimulation false;
 		_object setVectorDirAndUp [_vectorDirectionBefore, _vectorUpBefore];
 		_object setPosATL _positionBefore;
 	};
 };
-_object enableSimulationGlobal false;
+_object enableSimulation false;
 _position = getPosATL _object;
 _vectorDirection = vectorDir _object;
 _vectorUp = vectorUp _object;

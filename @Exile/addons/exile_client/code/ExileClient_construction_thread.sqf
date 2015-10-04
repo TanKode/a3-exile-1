@@ -221,7 +221,7 @@ switch (ExileClientConstructionResult) do
 	{
 		if( ExileClientConstructionProcess isEqualTo 1) then
 		{
-			player removeMagazineGlobal ExileClientConstructionKitClassName;
+			player removeItem ExileClientConstructionKitClassName;
 		};
 		[ExileClientConstructionObject, getText (ExileClientConstructionConfig >> "staticObject"), _simulatePhysics] spawn ExileClient_construction_simulationCountDown;
 		if (getText (ExileClientConstructionConfig >> "staticObject") isEqualTo "Exile_Container_Safe") then 

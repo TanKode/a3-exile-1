@@ -18,4 +18,3 @@
 1 "SatchelCharge_Remote_Ammo"
 1 "I_UAV"
 1 "O_HMG_01_F"
-1 "Steerable_Parachute_F"

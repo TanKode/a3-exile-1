@@ -13,7 +13,7 @@ _display = uiNameSpace getVariable ["RscExileXM8", displayNull];
 _playerListBox = _display displayCtrl 4131;
 _index = lbCurSel _playerListBox;
 _playerName = _playerListBox lbText _index;
-_playerUID = _playerListBox lbValue _index;
+_playerUID = _playerListBox lbData _index;
 _territoryDropDown = _display displayCtrl 4132;
 _flagNetID = _territoryDropDown lbData (lbCurSel _territoryDropDown);
 [format ["Kick %1?", _playerName], "Kick", "Don't kick"] call ExileClient_gui_xm8_showConfirm;
