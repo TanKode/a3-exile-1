@@ -16,4 +16,5 @@ if !((vehicle player) isEqualTo player) then
 	player action ["GetOut", vehicle player]; 
 	player action ["Eject", vehicle player];
 };
+setGroupIconsVisible [false, false];
 ("ExileClientHUDLayer" call BIS_fnc_rscLayer) cutText ["", "PLAIN"]; 

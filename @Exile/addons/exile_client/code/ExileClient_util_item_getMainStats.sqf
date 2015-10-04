@@ -318,7 +318,7 @@ switch (_itemType select 0) do
 					[
 						"ACCURACY", 
 						"",
-						linearConversion [0.00029, 0.02, _lowestDispersion, 1, 0, true] 
+						linearConversion [0.00035, 0.00493, _lowestDispersion, 1, 0, true] 
 					];
 					_stats pushBack
 					[

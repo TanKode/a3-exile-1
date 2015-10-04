@@ -12,7 +12,7 @@ _condition = _this;
 _object = ExileClientInteractionObject;
 if(ExileLockIsShown)exitWith{};
 ExileLockIsShown = true;
-_known = _object getVariable ["ExileAllreadyKnownCode",""];
+_known = _object getVariable ["ExileAlreadyKnownCode",""];
 if(_known isEqualTo "")then
 {
 	_pincode = 4 call ExileClient_gui_keypadDialog_show;

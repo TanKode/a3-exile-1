@@ -7,17 +7,17 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_container","_vehicle"];
+private["_container"];
 _container = _this select 1;
 ExileClientInventoryOpened = false;
 ExileClientCurrentInventoryContainer = objNull;
 try
 {
-	if((typeOf _vehicle) in ["GroundWeaponHolder","WeaponHolderSimulated"])then
+	if((typeOf _container) in ["GroundWeaponHolder","WeaponHolderSimulated"])then
 	{
 		throw "";
 	};
-	if(_vehicle isKindOf "Man")then
+	if(_container isKindOf "Man")then
 	{
 		throw "";
 	};

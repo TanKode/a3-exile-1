@@ -7,10 +7,11 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_player","_chuteNetID","_chute","_corpseGroup"];
+private["_player","_chuteNetID","_spawnType","_chute","_corpseGroup"];
 _player = _this select 0;
 _chuteNetID = _this select 1;
-if!(_chuteNetID isEqualTo "noParachute")then
+_spawnType = _this select 11;
+if !(_chuteNetID isEqualTo "") then
 {
 	_chute = objectFromNetId _chuteNetID;
 }
@@ -18,7 +19,7 @@ else
 {
 	_chute = objNull;
 };
-[_player, _chute] call ExileClient_object_player_spawn;
+[_player, _chute, _spawnType] call ExileClient_object_player_spawn;
 ExileClientPlayerMoney = parseNumber (_this select 2);
 ExileClientPlayerScore = parseNumber (_this select 3);
 ExileClientPlayerKills = _this select 4;

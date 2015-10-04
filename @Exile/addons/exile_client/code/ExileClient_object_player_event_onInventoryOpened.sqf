@@ -7,7 +7,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_cancelEvent","_container","_safes"];
+private["_cancelEvent","_container"];
 _cancelEvent = false;
 _container = _this select 1;
 if (ExileClientIsInConstructionMode) then
@@ -16,25 +16,21 @@ if (ExileClientIsInConstructionMode) then
 }
 else 
 {	
-	_safes = player nearObjects ["Exile_Container_Safe", 3];
-	{
-		if(_x getVariable ["ExileIsLocked",1] isEqualTo -1)exitWith
-		{
-			ExileClientInventoryOpened = true;
-			ExileClientCurrentInventoryContainer = _container;
-			["SafeIsLockedWarning"] call ExileClient_gui_notification_event_addNotification;
-			_cancelEvent = true;
-		};
-	} 
-	forEach _safes;
-	if((locked _container) isEqualTo 2)then
+	if ((locked _container) isEqualTo 2) then
 	{
 		_cancelEvent = true;
 	}
 	else
 	{
-		ExileClientInventoryOpened = true;
-		ExileClientCurrentInventoryContainer = _container;
+		if (_container getVariable ["ExileIsLocked", 1] isEqualTo -1) then 
+		{
+			_cancelEvent = true;
+		}
+		else 
+		{
+			ExileClientInventoryOpened = true;
+			ExileClientCurrentInventoryContainer = _container;
+		};
 	};
 };
 _cancelEvent // OKAY!

@@ -39,7 +39,7 @@ _partyButton ctrlEnable false;
 _sendPopTabsButton = _display displayCtrl 4117;
 _sendPopTabsButton ctrlEnable false; 
 _popTabsInputBox = _display displayCtrl 4116;
-_popTabsInputBox ctrlSetText (str ExileClientPlayerMoney);
+_popTabsInputBox ctrlSetText "0";
 _territoryDropDown = _display displayCtrl 4114;
 _ourUID = getPlayerUID player;
 _hasTerritories = false;

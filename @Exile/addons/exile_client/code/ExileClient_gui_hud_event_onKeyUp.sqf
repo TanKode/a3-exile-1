@@ -19,6 +19,17 @@ if (_keyCode in (actionKeys 'User1') && !(_keyCode isEqualTo 0x02)) exitWith {ca
 switch (_keyCode) do  
 { 
 	case 0x29:	{ _stopPropagation = true; }; 
+	case 0x11,
+	case 0x1E,
+	case 0x1F,
+	case 0x20:
+	{
+		if (ExileClientIsAutoRunning) then
+		{
+			call ExileClient_system_autoRun_stop;
+			_stopPropagation = true; 
+		};
+	};
 	case 0x0B:	 	
 	{ 
 		call ExileClient_system_autoRun_toggle;
@@ -47,7 +58,7 @@ switch (_keyCode) do
 	{ 
 		if (ExileClientIsInConstructionMode) then
 		{
-			ExileClientConstructionObject setObjectTexture[0, "#(argb,2,2,1)color(0.7,0.93,0,0.6,ca)"];
+			ExileClientConstructionObject setObjectTextureGlobal [0, "#(argb,2,2,1)color(0.7,0.93,0,0.6,ca)"];
 			ExileClientConstructionCurrentSnapToObject = objNull;
 			ExileClientConstructionIsInSelectSnapObjectMode = false;
 			ExileClientConstructionPossibleSnapPositions = [];
@@ -70,7 +81,7 @@ switch (_keyCode) do
 	{ 
 		if (ExileClientIsInConstructionMode) then
 		{
-			ExileClientConstructionObject setObjectTexture[0, "#(argb,2,2,1)color(0.7,0.93,0,0.6,ca)"];
+			ExileClientConstructionObject setObjectTextureGlobal [0, "#(argb,2,2,1)color(0.7,0.93,0,0.6,ca)"];
 			ExileClientConstructionCurrentSnapToObject = objNull;
 			ExileClientConstructionIsInSelectSnapObjectMode = false;
 			ExileClientConstructionPossibleSnapPositions = [];

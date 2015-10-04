@@ -20,10 +20,20 @@ class Header
 };
 
 // DO NOT CHANGE THIS! +
-showHUD = 0;
+showHUD[] =
+{
+    true,   // Scripted HUD (same as showHUD command)
+    true,   // Vehicle + soldier info
+    true,   // Vehicle radar
+    true,   // Vehicle compass
+    true,   // Tank direction indicator
+    true,   // Commanding menu
+    false,   // Group Bar
+    true    // HUD Weapon Cursors
+};
 
 respawn = "BASE";
-respawnDelay = 120;
+respawnDelay = 0;
 respawnDialog = 0;
 respawnOnStart = 0;
 respawnButton = 1; 

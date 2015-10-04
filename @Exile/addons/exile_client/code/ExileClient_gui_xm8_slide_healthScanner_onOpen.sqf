@@ -7,7 +7,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_display","_infoControl","_info","_hitpointInfo","_hitpointNameAsAnArraySoArmaCanToBasicStringOperationsMuchWow","_hitPointName","_hitpointDamage","_hitpointHealth","_hitpointColor","_hitpointName"];
+private["_display","_infoControl","_info","_hitpointInfo","_hitPointName","_hitpointDamage","_hitpointHealth","_hitpointColor","_hitpointName"];
 disableSerialization;
 _display = uiNameSpace getVariable ["RscExileXM8", displayNull];
 _infoControl = _display displayCtrl 4121;
@@ -16,13 +16,11 @@ _hitpointInfo = getAllHitPointsDamage (vehicle player);
 {
 	if !(_x isEqualTo "") then 
 	{
-		if !((_x find "Hit") isEqualTo -1) then 
+		if(_x select [0,3] == "Hit")then
 		{
-			_hitpointNameAsAnArraySoArmaCanToBasicStringOperationsMuchWow = toArray _x;
-			_hitpointNameAsAnArraySoArmaCanToBasicStringOperationsMuchWow deleteRange [0, 3];
-			_hitPointName = toString _hitpointNameAsAnArraySoArmaCanToBasicStringOperationsMuchWow;
+			_hitPointName = _x select [3,(count _x)-1];
 		}
-		else 
+		else
 		{
 			_hitPointName = _x;
 		};
@@ -39,7 +37,6 @@ _hitpointInfo = getAllHitPointsDamage (vehicle player);
 		};	
 		_info = _info + (format ["<t size='1.25' align='left'>%1</t><t size='1.25' align='right' color='%2'>%3%4</t>", _hitpointName, _hitpointColor, _hitpointHealth, '%']);
 	};
-}
-forEach (_hitpointInfo select 0);
+} forEach (_hitpointInfo select 0);
 _infoControl ctrlSetStructuredText (parseText _info);
 [_infoControl] call BIS_fnc_ctrlTextHeight;

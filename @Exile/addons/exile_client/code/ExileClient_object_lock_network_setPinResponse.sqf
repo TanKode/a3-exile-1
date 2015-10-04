@@ -7,11 +7,12 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_object"];
-_object = _this select 1;
-if!(isNull _object)then
+private["_objectID","_object"];
+_objectID = _this select 1;
+_object = objectFromNetId _objectID;
+if !(isNull _object) then
 {
-	_object setVariable ["ExileAllreadyKnownCode",_this select 2];
+	_object setVariable ["ExileAlreadyKnownCode",_this select 2];
 };
 (_this select 0) call ExileClient_gui_notification_event_addNotification;
 true

@@ -17,7 +17,6 @@ _position = [_data select 16, _data select 17, _data select 18];
 _direction = _data select 15;
 _group = createGroup independent;
 _player = _group createUnit ["Exile_Unit_Player", _position, [], 0, "CAN_COLLIDE"];
-_player setVariable ["ExileSessionID",_sessionID];
 _player setDir _direction;
 _player setPosATL _position;
 _player disableAI "FSM";
@@ -75,7 +74,7 @@ _vest = _data select 39;
 _backpack = _data select 20;
 if (_uniform != "") then 
 {
-	_player addUniform _uniform;
+	_player forceAddUniform _uniform;
 };
 if (_vest != "") then
 {
@@ -83,7 +82,7 @@ if (_vest != "") then
 };
 if (_backpack != "") then
 {
-	_player addBackpack _backpack;
+	_player addBackpackGlobal _backpack;
 };
 _uniformContainer = uniformContainer _player;
 if !(isNil "_uniformContainer") then
@@ -150,7 +149,7 @@ if !(isNil "_loadObject") then
 _primaryWeapon = _data select 31;
 if (_primaryWeapon != "") then 
 {
-	_player addWeapon _primaryWeapon;
+	_player addWeaponGlobal _primaryWeapon;
 	removeAllPrimaryWeaponItems _player;
 	{ 
 		if (_x != "") then
@@ -163,7 +162,7 @@ if (_primaryWeapon != "") then
 _handgunWeapon = _data select 27;
 if (_handgunWeapon != "") then
 {
-	_player addWeapon _handgunWeapon;
+	_player addWeaponGlobal _handgunWeapon;
 	removeAllHandgunItems _player;
 	{ 
 		if (_x != "") then
@@ -176,7 +175,7 @@ if (_handgunWeapon != "") then
 _secondaryWeapon = _data select 33;
 if (_secondaryWeapon != "") then
 {
-	_player addWeapon _secondaryWeapon;
+	_player addWeaponGlobal _secondaryWeapon;
 	{ 
 		if (_x != "") then
 		{
@@ -215,5 +214,5 @@ _player addMPEventHandler ["MPKilled", {_this call ExileServer_object_player_eve
 	]
 ] 
 call ExileServer_system_network_send_to;
-[_sessionID, _player] call ExileServer_system_session_updatePlayerObject;
+[_sessionID, _player] call ExileServer_system_session_update;
 true

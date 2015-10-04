@@ -7,3 +7,5 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
+true call ExileClient_gui_xm8_slide_territory_event_handleModeration;
+true

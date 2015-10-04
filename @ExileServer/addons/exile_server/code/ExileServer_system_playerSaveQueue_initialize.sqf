@@ -8,5 +8,5 @@
  */
  
 ExileSystemPlayerSaveASYNC = [];
-[30, ExileServer_system_playerSaveQueue_thread_SavePlayer, [], true] call ExileServer_system_thread_addtask;
+[30, ExileServer_system_playerSaveQueue_thread_savePlayer, [], true] call ExileServer_system_thread_addtask;
 true

@@ -7,7 +7,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-if!(ExileClientLastVehicle isEqualTo (vehicle player))then
+if !(ExileClientLastVehicle isEqualTo (vehicle player)) then
 {
 	call ExileClient_gui_safezone_reset;
 	ExileClientLastVehicle = vehicle player;

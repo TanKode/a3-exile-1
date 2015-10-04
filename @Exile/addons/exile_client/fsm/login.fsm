@@ -23,10 +23,10 @@ item18[] = {"Failed_5_times",4,218,1150.000000,775.000000,1250.000000,825.000000
 item19[] = {"Wait_2s",4,218,1025.000000,700.000000,1125.000000,750.000000,0.000000,"Wait 2s"};
 item20[] = {"",7,210,821.000000,721.000000,829.000000,729.000000,0.000000,""};
 item21[] = {"Show_error_messa",2,250,1375.000000,2625.000000,1475.000000,2675.000000,0.000000,"Show" \n "error" \n "message"};
-item22[] = {"__5__Request_hive",2,250,775.000000,925.000000,875.000000,975.000000,0.000000,"15% Request" \n "hive" \n "version"};
+item22[] = {"__5__Request_server",2,250,775.000000,925.000000,875.000000,975.000000,0.000000,"15% Request" \n "server" \n "version"};
 item23[] = {"Version_received",4,218,775.000000,1000.000000,875.000000,1050.000000,10.000000,"Version" \n "received"};
 item24[] = {"__0s_timeout",4,218,900.000000,925.000000,1000.000000,975.000000,0.000000,"30s timeout"};
-item25[] = {"__0__Check_hive",2,250,775.000000,1075.000000,875.000000,1125.000000,0.000000,"20% Check" \n "hive" \n "version"};
+item25[] = {"__0__Check_server",2,250,775.000000,1075.000000,875.000000,1125.000000,0.000000,"20% Check" \n "server" \n "version"};
 item26[] = {"Good_version",4,218,775.000000,1150.000000,875.000000,1200.000000,10.000000,"Good" \n "version"};
 item27[] = {"Wrong_version",4,218,900.000000,1075.000000,1000.000000,1125.000000,0.000000,"Wrong" \n "version"};
 item28[] = {"__0__Request_character",2,250,775.000000,1625.000000,875.000000,1675.000000,0.000000,"40% Request" \n "character" \n "information"};
@@ -47,7 +47,7 @@ item42[] = {"Timeout_30s",4,218,1125.000000,2625.000000,1225.000000,2675.000000,
 item43[] = {"Continue",8,218,675.000000,2825.000000,775.000000,2875.000000,0.000000,"Continue"};
 item44[] = {"Enable_user_inpu",2,250,775.000000,2875.000000,875.000000,2925.000000,0.000000,"Enable" \n "user" \n "input"};
 item45[] = {"Continue",8,218,675.000000,2925.000000,775.000000,2975.000000,0.000000,"Continue"};
-item46[] = {"Play",1,4346,775.000000,2975.000000,875.000000,3025.000000,0.000000,"Play"};
+item46[] = {"Play",1,250,775.000000,2975.000000,875.000000,3025.000000,0.000000,"Play"};
 item47[] = {"Wait_10s",4,218,1375.000000,2700.000000,1475.000000,2750.000000,0.000000,"Wait 10s"};
 item48[] = {"Hide_loading_scr",2,250,1375.000000,2775.000000,1475.000000,2825.000000,0.000000,"Hide" \n "loading" \n "screen"};
 item49[] = {"Continue",8,218,1275.000000,2825.000000,1375.000000,2875.000000,0.000000,"Continue"};
@@ -178,8 +178,8 @@ link89[] = {82,53};
 link90[] = {24,83};
 link91[] = {33,83};
 link92[] = {77,83};
-globals[] = {25.000000,1,0,0,0,640,480,1,419,6316128,1,340.484894,1386.570435,3186.149414,2421.540771,1245,910,1};
-window[] = {2,-1,-1,-1,-1,968,234,1528,234,3,1263};
+globals[] = {25.000000,1,0,0,0,640,480,1,419,6316128,1,340.484894,1386.570435,1951.852905,1187.244141,1245,910,1};
+window[] = {2,-1,-1,-1,-1,812,78,1372,78,3,1263};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -226,7 +226,7 @@ class FSM
        "" \n
        "0 fadeSound 0;" \n
        "" \n
-       "player enableSimulation false;" \n
+       "player enableSimulationGlobal false;" \n
        "" \n
        "disableUserInput true;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -386,7 +386,7 @@ class FSM
         class UID_exists
         {
           priority = 10.000000;
-          to="__5__Request_hive";
+          to="__5__Request_server";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"_myPlayerUID != """""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -461,10 +461,10 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "__5__Request_hive">*/
-    class __5__Request_hive
+    /*%FSM<STATE "__5__Request_server">*/
+    class __5__Request_server
     {
-      name = "__5__Request_hive";
+      name = "__5__Request_server";
       init = /*%FSM<STATEINIT""">*/"_message = ""Receiving server version..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
        "diag_log _message;" \n
@@ -479,7 +479,7 @@ class FSM
         class Version_received
         {
           priority = 10.000000;
-          to="__0__Check_hive";
+          to="__0__Check_server";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!isNil ""PublicHiveVersion"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -498,10 +498,10 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
-    /*%FSM<STATE "__0__Check_hive">*/
-    class __0__Check_hive
+    /*%FSM<STATE "__0__Check_server">*/
+    class __0__Check_server
     {
-      name = "__0__Check_hive";
+      name = "__0__Check_server";
       init = /*%FSM<STATEINIT""">*/"_message = ""Checking server version..."";" \n
        "_message call ExileClient_gui_loadingScreen_updateText;" \n
        "diag_log _message;" \n
@@ -795,7 +795,8 @@ class FSM
        "//Loaded" \n
        "ExileClientLoadedIn = true;" \n
        "" \n
-       "showChat true;"/*%FSM</STATEINIT""">*/;
+       "showChat true;" \n
+       "setGroupIconsVisible [true, true];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -833,7 +834,7 @@ class FSM
        "" \n
        "3 fadeSound 1;" \n
        "" \n
-       "player enableSimulation false;"/*%FSM</STATEINIT""">*/;
+       "player enableSimulationGlobal false;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

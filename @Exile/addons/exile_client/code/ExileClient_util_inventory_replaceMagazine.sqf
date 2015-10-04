@@ -34,14 +34,14 @@ if!(_magazines isEqualTo [])then
 					_removed = true;
 				};
 			};
-			_object removeMagazine (_x select 0);
+			_object removeMagazineGlobal (_x select 0);
 		};
 	}
 	forEach _magazines;
 };
 _newMagazines pushBack _toMagazine;
 {
-	_object addMagazine _x;
+	_object addMagazine [_x, getNumber (configFile >> "CfgMagazines" >> _x >> "count")];
 }
 forEach _newMagazines;
 true

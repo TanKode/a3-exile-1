@@ -7,7 +7,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_itemClassName"];
+private["_itemClassName","_minimumDistanceToTraderZones","_minimumDistanceToSpawnZones"];
 _itemClassName = _this select 0;
 if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> "Constructing") ) then
 {
@@ -17,9 +17,20 @@ if( isClass(configFile >> "CfgMagazines" >> _itemClassName >> "Interactions" >> 
 	};
 	try 
 	{
-		if !((vehicle player) isEqualTo player) then { throw "ConstructionVehicleWarning"; };
-		if ((getPosATL player) call ExileClient_util_world_isTraderZoneNearby) then { throw "ConstructionTraderZoneWarning"; };
-		if ((getPosATL player) call ExileClient_util_world_isSpawnZoneNearby) then { throw "ConstructionSpawnZoneWarning"; };
+		if !((vehicle player) isEqualTo player) then 
+		{ 
+			throw "ConstructionVehicleWarning"; 
+		};
+		_minimumDistanceToTraderZones = getNumber (missionConfigFile >> "CfgTerritories" >> "minimumDistanceToTraderZones");
+		if ([getPosATL player, _minimumDistanceToTraderZones] call ExileClient_util_world_isTraderZoneInRange) then
+		{
+			throw "ConstructionTraderZoneWarning";
+		};
+		_minimumDistanceToSpawnZones = getNumber (missionConfigFile >> "CfgTerritories" >> "minimumDistanceToSpawnZones");
+		if ([getPosATL player, _minimumDistanceToSpawnZones] call ExileClient_util_world_isSpawnZoneInRange) then
+		{
+			throw "ConstructionSpawnZoneWarning";
+		};
 		if(_itemClassName isEqualTo "Exile_Item_Flag") then { throw "FLAG"; };
 		[_itemClassName] call ExileClient_construction_beginNewObject;
 	}

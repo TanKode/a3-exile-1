@@ -19,16 +19,17 @@ _vehicleObject setVectorDirAndUp [_vectorDirection, _vectorUp];
 _vehicleObject setVariable ["ExileDatabaseID", _vehicleID];
 _vehicleObject setVariable ["ExileOwnerUID", (_data select 3)];
 _lock = (_data select 4);
-if(_lock isEqualTo -1)then
+if (_lock isEqualTo -1) then
 {
-	_vehicleObject setVariable ["ExileIsLocked",-1];
+	_vehicleObject setVariable ["ExileIsLocked", -1];
 	_vehicleObject lock 2;
 	_vehicleObject enableRopeAttach false;
 }
 else
 {
-	_vehicleObject setVariable ["ExileIsLocked",0];
+	_vehicleObject setVariable ["ExileIsLocked", 0];
 	_vehicleObject lock 0;
+	_vehicleObject enableRopeAttach true;
 };
 _vehicleObject setFuel (_data select 5);
 _vehicleObject setDamage (_data select 6);
@@ -46,4 +47,8 @@ if !(_cargoContainers isEqualTo []) then
 };
 _vehicleObject enableSimulationGlobal false;
 _vehicleObject call ExileServer_system_simulationMonitor_addVehicle;
+if ((getPosATL _vehicleObject) call ExileClient_util_world_isInTraderZone) then 
+{
+	_vehicleObject allowDamage false;
+};
 _vehicleObject

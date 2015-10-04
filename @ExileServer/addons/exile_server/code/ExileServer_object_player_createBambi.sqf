@@ -7,7 +7,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_sessionID","_requestingPlayer","_spawnLocationMarkerName","_bambiPlayer","_accountData","_spawnAreaPosition","_spawnAreaRadius","_direction","_position","_clanID","_clanName","_parachuteNetID","_parachuteObject"];
+private["_sessionID","_requestingPlayer","_spawnLocationMarkerName","_bambiPlayer","_accountData","_spawnAreaPosition","_spawnAreaRadius","_direction","_position","_clanID","_clanName","_parachuteNetID","_spawnType","_parachuteObject"];
 _sessionID = _this select 0;
 _requestingPlayer = _this select 1;
 _spawnLocationMarkerName = _this select 2;
@@ -15,7 +15,7 @@ _bambiPlayer = _this select 3;
 _accountData = _this select 4;
 _spawnAreaPosition = getMarkerPos _spawnLocationMarkerName;
 _spawnAreaPosition set [2, getNumber(configFile >> "CfgSettings" >> "BambiSettings" >> "parachuteDropHeight")]; 
-_spawnAreaRadius = getNumber(configFile >> "CfgSpawnZones" >> "BambiSettings" >> "spawnZoneRadius");
+_spawnAreaRadius = getNumber(configFile >> "CfgSettings" >> "BambiSettings" >> "spawnZoneRadius");
 _direction = random 360;
 _position = [_spawnAreaPosition, _spawnAreaRadius] call ExileClient_util_math_getRandomPositionInCircle;
 _name = name _requestingPlayer;
@@ -49,20 +49,29 @@ _bambiPlayer setVariable ["ExileXM8IsOnline", false, true];
 _parachuteNetID = "";
 if ((getNumber(configFile >> "CfgSettings" >> "BambiSettings" >> "parachuteSpawning")) isEqualTo 1) then
 {
-	_parachuteObject = createVehicle ["Steerable_Parachute_F", _position, [], 0, "CAN_COLLIDE"];
-	_parachuteObject setDir _direction;
-	_parachuteObject setPos _position;
-	_parachuteObject enableSimulationGlobal true;
-	_parachuteNetID = netId _parachuteObject;
+	if ((getNumber(configFile >> "CfgSettings" >> "BambiSettings" >> "haloJump")) isEqualTo 1) then
+	{
+		_bambiPlayer addBackpackGlobal "B_Parachute";
+		_bambiPlayer setPosATL _position;
+		_spawnType = 2;
+	}
+	else 
+	{
+		_parachuteObject = createVehicle ["Steerable_Parachute_F", _position, [], 0, "CAN_COLLIDE"];
+		_parachuteObject setDir _direction;
+		_parachuteObject setPosATL _position;
+		_parachuteObject enableSimulationGlobal true;
+		_parachuteNetID = netId _parachuteObject;
+		_spawnType = 1;
+	};
 }
 else
 {
-	_parachuteNetID = "noParachute";
+	_spawnType = 1;
 };
 _bambiPlayer addMPEventHandler ["MPKilled", {_this call ExileServer_object_player_event_onMpKilled}];
 _bambiPlayer call ExileServer_object_player_database_insert;
 _bambiPlayer call ExileServer_object_player_database_update;
-_bambiPlayer setVariable ["ExileSessionID",_sessionID];
 [
 	_sessionID, 
 	"createPlayerResponse", 
@@ -77,9 +86,10 @@ _bambiPlayer setVariable ["ExileSessionID",_sessionID];
 		100,
 		0,
 		(getNumber (configFile >> "CfgSettings" >> "BambiSettings" >> "protectionDuration")) * 60, 
-		_clanName
+		_clanName,
+		_spawnType
 	]
 ] 
 call ExileServer_system_network_send_to;
-[_sessionID, _bambiPlayer] call ExileServer_system_session_updatePlayerObject;
+[_sessionID, _bambiPlayer] call ExileServer_system_session_update;
 true

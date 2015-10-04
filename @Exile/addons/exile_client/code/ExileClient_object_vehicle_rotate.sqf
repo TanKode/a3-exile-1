@@ -16,6 +16,6 @@ if(local _vehicle)then
 }
 else
 {
-	["rotateVehicleRequest",[_vehicle,_roatation]] call ExileClient_system_network_send;
+	["rotateVehicleRequest",[netId _vehicle,_roatation]] call ExileClient_system_network_send;
 };
 true

@@ -34,7 +34,7 @@ if !((backpack player) isEqualTo "") then
 	_inventoryDropdown lbSetPicture [_index, "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa"];
 	_inventoryDropdown lbSetValue [_index, 4];
 };
-_nearVehicles = nearestObjects [player, ["Car", "Bike", "Motorcycle", "Air", "Ship"], 80];
+_nearVehicles = nearestObjects [player, ["LandVehicle", "Air", "Ship"], 80];
 {
 	if (local _x) then
 	{

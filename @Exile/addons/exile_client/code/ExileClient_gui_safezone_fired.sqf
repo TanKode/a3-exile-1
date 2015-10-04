@@ -7,7 +7,12 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-deleteVehicle (_this select 6);
+private["_projectile"];
+_projectile = _this select 6;
+if (local _projectile) then 
+{
+	deleteVehicle _projectile;
+};
 systemChat "You shoot AIR!";
 cutText ["You shoot AIR!","PLAIN DOWN"];
 hint "You are a muppet";

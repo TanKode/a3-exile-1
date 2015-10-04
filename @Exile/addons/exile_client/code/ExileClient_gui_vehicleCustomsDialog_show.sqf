@@ -16,11 +16,11 @@ switch (typeOf _traderObject) do
 {
 	case "Exile_Trader_VehicleCustoms":
 	{
-		_nearVehicles = nearestObjects [player, ["Car", "Bike", "Motorcycle"], 50];
+		_nearVehicles = nearestObjects [player, ["LandVehicle"], 50];
 	};
 	case "Exile_Trader_AircraftCustoms":
 	{
-		_nearVehicles = nearestObjects [player, ["Plane", "Air"], 80];
+		_nearVehicles = nearestObjects [player, ["Air"], 80];
 	};
 	case "Exile_Trader_BoatCustoms":
 	{

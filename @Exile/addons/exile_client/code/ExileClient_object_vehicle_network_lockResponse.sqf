@@ -7,17 +7,23 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_message","_mode","_vehicle","_pincode"];
+private["_message","_mode","_vehicleID","_pincode","_lockedState","_vehicle"];
 _message = _this select 0;
 _mode = _this select 1;
-_vehicle = _this select 2;
+_vehicleID = _this select 2;
 _pincode = _this select 3;
-if(_mode)then
+_lockedState = _this select 4;
+_vehicle = objectFromNetId _vehicleID;
+if !(_lockedState isEqualTo -1) then 
+{
+	[_vehicle, _lockedState] spawn ExileClient_object_vehicle_chirpChirp;
+	_vehicle setVariable ["ExileAlreadyKnownCode", _pincode];
+};
+if (_mode isEqualTo true) then 
 {
 	["Success", [_message]] call ExileClient_gui_notification_event_addNotification;
-	_vehicle setVariable ["ExileAllreadyKnownCode",_pincode];
 }
-else
+else 
 {
 	["Whoops", [_message]] call ExileClient_gui_notification_event_addNotification;
 };

@@ -17,6 +17,7 @@ if(typeOf (vehicle player) isEqualTo "Steerable_Parachute_F")then
 	{
 		deleteVehicle (vehicle player);
 		player switchMove "";
+		player setVelocity [0, 0, 0];
 		[ExileJobParachuteFix] call ExileClient_system_thread_removeTask;
 	};
 };

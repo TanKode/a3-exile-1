@@ -87,6 +87,10 @@ if (_index > -1) then
 		_tradingResult = _exception;
 		_canBuyItem = false;
 	};
+	if (ExileClientIsWaitingForServerTradeResponse) then
+	{
+		_canBuyItem = false;
+	};
 	if (_canBuyItem) then 
 	{
 		_purchaseButton ctrlEnable true;

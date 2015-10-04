@@ -9,5 +9,5 @@
  
 _this call ExileClient_util_playerEquipment_clear;
 removeVest _this;
-removeBackpack _this;
+removeBackpackGlobal _this;
 removeUniform _this;

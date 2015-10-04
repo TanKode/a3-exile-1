@@ -36,6 +36,43 @@ try
 		throw 3;
 	};
 	_salesPrice = getNumber (missionConfigFile >> "CfgExileArsenal" >> _itemClassName >> "price");
+	if (_containerType isEqualTo 1) then
+	{
+		if (_itemClassName isEqualTo (primaryWeapon _playerObject)) then
+		{
+			{
+				{
+					if !(_x isEqualTo "") then
+					{
+						_salesPrice = _salesPrice + getNumber (missionConfigFile >> "CfgExileArsenal" >> _x >> "price");
+					};
+				}
+				forEach _x;
+			}
+			forEach 
+			[
+				primaryWeaponItems _playerObject,
+				primaryWeaponMagazine _playerObject
+			];
+		};
+		if (_itemClassName isEqualTo (handgunWeapon _playerObject)) then
+		{
+			{
+				{
+					if !(_x isEqualTo "") then
+					{
+						_salesPrice = _salesPrice + getNumber (missionConfigFile >> "CfgExileArsenal" >> _x >> "price");
+					};
+				}
+				forEach _x;
+			}
+			forEach 
+			[
+				handgunItems _playerObject,
+				handgunMagazine _playerObject
+			];
+		};
+	};
 	_sellPrice = floor (_salesPrice * 0.5);
 	if (_sellPrice <= 0) then
 	{

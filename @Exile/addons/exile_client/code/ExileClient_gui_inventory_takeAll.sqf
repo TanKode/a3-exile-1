@@ -9,13 +9,6 @@
  
 if !(isNull ExileClientCurrentInventoryContainer) then
 {
-	[ExileClientCurrentInventoryContainer, player] call ExileClient_util_playerCargo_takeAll;
-	if (ExileClientPlayerIsBambi) then
-	{
-		if ((count (weapons player)) > 0) then
-		{
-			call ExileClient_object_player_bambiStateEnd;
-		};
-	};
+	["beginTakeAllRequest", [netId ExileClientCurrentInventoryContainer]] call ExileClient_system_network_send;
 };
 true

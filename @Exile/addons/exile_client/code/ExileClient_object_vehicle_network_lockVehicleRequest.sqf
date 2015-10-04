@@ -7,9 +7,10 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_vehicleObject","_mode"];
-_vehicleObject = _this select 0;
+private["_vehicleID","_mode","_vehicleObject"];
+_vehicleID = _this select 0;
 _mode = _this select 1;
+_vehicleObject = objectFromNetId _vehicleID;
 if(local _vehicleObject)then
 {
 	if(_mode)then

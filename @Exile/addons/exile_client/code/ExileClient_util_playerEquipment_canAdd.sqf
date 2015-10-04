@@ -7,7 +7,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_player","_itemClassName","_itemInformation","_itemCategory","_itemType","_canAdd","_weaponType","_compatibleWeaponItems","_attachmentSlotIndex"];
+private["_player","_itemClassName","_itemInformation","_itemCategory","_itemType","_canAdd","_weaponType","_compatibleWeaponItems","_attachmentSlotIndex","_assignedItems"];
 _player = _this select 0;
 _itemClassName = toLower (_this select 1); 
 _itemInformation = [_itemClassName] call BIS_fnc_itemType;
@@ -95,9 +95,16 @@ switch (_itemCategory) do
 					[handgunWeapon _player, handgunItems _player] 
 				];
 			};
+			case "Watch": 
+			{
+				_assignedItems = assignedItems _player;
+				if !(("ItemWatch" in _assignedItems) || ("Exile_Item_XM8" in _assignedItems)) then 
+				{
+					_canAdd = true;
+				};
+			};
 			case "Map", 
 			case "Radio", 
-			case "Watch", 
 			case "NVGoggles", 
 			case "Glasses", 
 			case "Compass": 

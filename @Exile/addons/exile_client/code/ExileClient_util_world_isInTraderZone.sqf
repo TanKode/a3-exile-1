@@ -7,18 +7,14 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_position","_result","_trigger"];
+private["_position","_result"];
 _position = _this;
 _result = false;
-_trigger = _position nearestObject "EmptyDetector";
 {
-	if (getMarkerType _x == "ExileTraderZone") then
+	if (((_x select 0) distance2D _position) < (_x select 1)) exitWith
 	{
-		if ((getMarkerPos _x) distance2D _position < ((getMarkerSize _x) select 0)) exitWith
-		{
-			_result = true;
-		};
+		_result = true;
 	};
 }
-forEach allMapMarkers;
+forEach ExileTraderZoneMarkerPositionsAndSize;
 _result

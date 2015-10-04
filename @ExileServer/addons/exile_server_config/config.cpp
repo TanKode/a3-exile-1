@@ -663,6 +663,8 @@ class CfgLootTables
 	{
 		top = 78.32;
 		count = 177;
+		half = 62.1;
+		halfIndex = 88;
 		maximum = 100;
 		sum = 17700;
 		items[] = 
@@ -848,6 +850,8 @@ class CfgLootTables
 	{
 		top = 62.22;
 		count = 100;
+		half = 44.15;
+		halfIndex = 50;
 		maximum = 100;
 		sum = 10000;
 		items[] = 
@@ -956,6 +960,8 @@ class CfgLootTables
 	{
 		top = 33.95;
 		count = 48;
+		half = 26.95;
+		halfIndex = 24;
 		maximum = 100;
 		sum = 4800;
 		items[] = 
@@ -1013,10 +1019,12 @@ class CfgLootTables
 
 	class Industrial
 	{
-		top = 2.85;
-		count = 12;
+		top = 2.86;
+		count = 13;
+		half = 2.45;
+		halfIndex = 6;
 		maximum = 100;
-		sum = 1200;
+		sum = 1300;
 		items[] = 
 		{
 			{0.5, 	"Exile_Melee_Axe"},
@@ -1030,16 +1038,19 @@ class CfgLootTables
 			{2.65, 	"Exile_Item_MetalBoard"},
 			{2.75, 	"Exile_Item_DuctTape"},
 			{2.8, 	"Exile_Item_PortableGeneratorKit"},
-			{2.85, 	"Exile_Item_FloodLightKit"}
+			{2.85, 	"Exile_Item_FloodLightKit"},
+            {2.86, "Exile_Item_ThermalScannerPro"}
 		};
 	};
 
 	class VehicleService
 	{
-		top = 1.55;
-		count = 6;
+		top = 1.56;
+		count = 7;
+		half = 1.35;
+		halfIndex = 3;
 		maximum = 100;
-		sum = 600;
+		sum = 700;
 		items[] = 
 		{
 			{0.5, 	"Exile_Item_FuelCanisterEmpty"},
@@ -1055,6 +1066,8 @@ class CfgLootTables
 	{
 		top = 94.13;
 		count = 220;
+		half = 68.3500000000001;
+		halfIndex = 110;
 		maximum = 100;
 		sum = 22000;
 		items[] = 
@@ -1280,6 +1293,8 @@ class CfgLootTables
 	{
 		top = 1;
 		count = 1;
+		half = 1;
+		halfIndex = 0;
 		maximum = 100;
 		sum = 100;
 		items[] = 
@@ -1292,6 +1307,8 @@ class CfgLootTables
 	{
 		top = 14.85;
 		count = 30;
+		half = 10.95;
+		halfIndex = 15;
 		maximum = 100;
 		sum = 3000;
 		items[] = 
@@ -1337,16 +1354,41 @@ class CfgSettings
 	class GarbageCollector
 	{
 		/*
-		* This number defines after how many minutes (+1..5 minutes imprecision) 
-		* a corpse, vehicle wreck or dropped items should despawn.
+		* despawnAfterMinutes defines after how many minutes (+1..5 minutes imprecision) 
+		* a corpse, vehicle wreck or dropped item should despawn.
         *
         * These things will despawn after despawnAfterMinutes time, but only
-        * if there is no player within despawnRadius. If forceDespawnAfterMinutes
-        * exceeded, it will despawn anyways.
+        * if there is no player within delayDespawnIfPlayerInRange. If 
+        * forceDespawnAfterMinutes exceeded, it will not delay despawning and 
+        * force a despawn after despawnAfterMinutes.
+        *
+        * despawnAfterMinutes = minutes
+        * forceDespawnAfterMinutes = minutes
+        * delayDespawnIfPlayerInRange = meters
 		*/
-		despawnAfterMinutes = 15;
-		forceDespawnAfterMinutes = 25;
-		despawnRadius = 40;
+
+		class Corpses
+		{
+			despawnAfterMinutes = 15;
+			delayDespawnIfPlayerInRange = 40;
+			forceDespawnAfterMinutes = 25;
+		};
+
+		class Wrecks
+		{
+			// Wrecks should always despawn after 5 minutes, since
+			// they are useless
+			despawnAfterMinutes = 5;
+			delayDespawnIfPlayerInRange = 40;
+			forceDespawnAfterMinutes = 5;
+		};
+
+		class DroppedItems
+		{
+			despawnAfterMinutes = 15;
+			delayDespawnIfPlayerInRange = 20;
+			forceDespawnAfterMinutes = 25;
+		};
 	};
 
 	///////////////////////////////////////////////////////////////////////
@@ -1366,12 +1408,15 @@ class CfgSettings
 		*/
 		class Frags
 		{
-			bambi = -1000;			// Bambi slayers
-			friendlyFire = -500;	// For party members
-			standard = 50;			// Normal kill
-			humiliation = 100;		// Axe
-			passenger = 150;		// Out of car/chopper/boat
-			roadKill = 0;			// :)
+			bambi = -1000;				// Bambi slayers
+			friendlyFire = -500;		// For party members
+			standard = 50;				// Normal kill
+			letItRain = 100;			// MG, also vehicle MGs
+			humiliation = 100;			// Axe
+			passenger = 150;			// Out of car/chopper/boat
+			roadKill = 0;				// :)
+			bigBird = 600;				// Roadkill, but with chopper/plane
+			chuteGreaterChopper = 600; 	// Someone flies into chute and chopper/plane explodes 			
 		};
 
 		class Bonus
@@ -1437,6 +1482,19 @@ class CfgSettings
 		parachuteSpawning = 0;
 
 		/**
+		 * Enables or disables halo jumping. Only applies 
+		 * if parachute spawning is enabled.
+		 *
+		 * Remember that if you enable halo jump, it is adviced
+		 * to adjust the parachuteDropHeight to something around
+		 * 1km or so.
+		 *
+		 * 1 = On
+		 * 0 = Off
+		 */
+		haloJump = 1;
+
+		/**
 		 * Parachute drop height in meters. 
 		 */
 		parachuteDropHeight = 400;
@@ -1479,13 +1537,30 @@ class CfgSettings
 	class LootSettings
 	{
 		/**
+		 * Chance in % to spawn loot in a building
+		 */
+		spawnChancePerBuilding = 50;
+
+		/**
 		 * Chance in % to spawn loot per loot spot per building.
 		 *
 		 * 100% = Super high loot
 		 * 50%  = Normal loot spawn rates
 		 * 20%  = You get the point
 		 */
-		spawnChance = 50;
+		spawnChancePerPosition = 50;
+
+		/**
+		 * Should be self-explanatory :)
+		 */
+		maximumNumberOfLootSpotsPerBuilding = 4;
+
+		/**
+		 * Exile spawns a random number of items per loot spot. This 
+		 * is the upper cap for that. So 3 means it could spawn 1, 2 
+		 * or 3.
+		 */
+		maximumNumberOfItemsPerLootSpot = 3;
 
 		/**
 		 * Radius in meter to spawn loot AROUND each player.
@@ -1496,16 +1571,18 @@ class CfgSettings
 		 * 50m  = Minimum
 		 * 200m = Maximum
 		 */
-		spawnRadius = 100;
+		spawnRadius = 80;
 
 		/**
 		* Define a de-spawn radius here. That is the radius where loot
-		* is not near to players and their lifeTime expired.
+		* is not near to players and their lifeTime expired. It will 
+		* also not spawn loot in a circle around the players to 
+		* prevent "flickering".
 		*
-		* 10m  = Minimum
+		* 10m  = Minimum (thats better if a house is alone in the wild)
 		* 50m = Maximum
 		*/
-		visualThreshold = 25;
+		visualThreshold = 10;
 
 		/**
 		 * Time in seconds to define how long loot stays on the ground
@@ -1515,15 +1592,30 @@ class CfgSettings
 		 * regardless if players are nearby or not.
 		 */
 		minimumLifeTime = 300; // 5 minutes
-		maximumLifeTime = 900; // 15 minutes
+		maximumLifeTime = 600; // 10 minutes
 
 		/**
-		 * Notify a player that loot spawned for him
+		 * Notify players that loot spawned for them
 		 *
 		 * 1 = Yes
 		 * 0 = No
 		 */
 		notifyPlayer = 1;
+
+		/**
+		 * Defines the radius around trader cities where the system should
+		 * not spawn loot. Set this to 0 if you want to have loot spawning
+		 * in trader citites, ugh.
+		 */
+		minimumDistanceToTraderZones = 500;
+
+		/**
+		 * Defines the radius around territories where no loot spawns.
+		 * This does not regard the actual size of a territory. So do not
+		 * set this to a lower value than the maximum radius of a territory,
+		 * which is 150m by default.
+		 */
+		minimumDistanceToTerritories = 150;
 	};
 
 	///////////////////////////////////////////////////////////////////////
@@ -1581,6 +1673,22 @@ class CfgSettings
 			"Exile_Car_Offroad_Rusty2",
 			"Exile_Car_Offroad_Rusty3"
 		};
+
+		/**
+		 * Enables or disables nightvision optics on ALL vehicles
+		 *
+		 * 0 = off
+		 * 1 = on
+		 */
+		nightVision = 1;
+
+		/**
+		 * Enables or disables thermal optics on ALL vehicles
+		 *
+		 * 0 = off
+		 * 1 = on
+		 */
+		thermalVision = 0;		
 	};
 
 	class LocalityMonitor
@@ -1631,8 +1739,8 @@ class CfgSettings
 			fogBase = 5;
 			overcast = 0.2;
 			waves = 0.2;
-			wind = 0.3;
-			gusts = 0.3;
+			wind = 0.25;
+			gusts = 0.1;
 			rain = 0;
 			lightnings = 0;
 			rainbows = 0;
@@ -1645,8 +1753,8 @@ class CfgSettings
 			fogBase = 5;
 			overcast = 0.4;
 			waves = 0.4;
-			wind = 0.7;
-			gusts = 0.6;
+			wind = 0.25;
+			gusts = 0.5;
 			rain = 0.1;
 			lightnings = 0.1;
 			rainbows = 1;
@@ -1673,8 +1781,8 @@ class CfgSettings
 			fogBase = 5;
 			overcast = 1;
 			waves = 1;
-			wind = 1;
-			gusts = 1;
+			wind = 0.25;
+			gusts = 0.5;
 			rain = 1;
 			lightnings = 1;
 			rainbows = 0.5;
@@ -1750,6 +1858,6 @@ class CfgSettings
 
 			Only use full minutes here. Value like 5.5 have not been tested.
 		*/
-		restartWarrningTime[] = {15, 10, 5, 3}; 
+		restartWarrningTime[] = {15, 10, 5, 3};
 	};
 };

@@ -9,7 +9,7 @@
  
 private["_nearVehicles","_localVehicles","_display","_revenue","_sellButton","_dropdown","_vehicleObject","_vehicleName","_index"];
 disableSerialization;
-_nearVehicles = nearestObjects [player, ["Car", "Bike", "Motorcycle", "Plane", "Air", "Ship"], 150];
+_nearVehicles = nearestObjects [player, ["LandVehicle", "Air", "Ship"], 150];
 _localVehicles = [];
 {
 	if (local _x) then

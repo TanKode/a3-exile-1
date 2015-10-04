@@ -15,6 +15,7 @@ _quantity  = _this select 3;
 _containerType = _this select 4;
 _containerNetID = _this select 5;
 _newPlayerRespectString = _this select 6;
+ExileClientIsWaitingForServerTradeResponse = false;
 if (_responseCode isEqualTo 0) then
 {
 	_newPlayerMoney = parseNumber _newPlayerMoneyString;

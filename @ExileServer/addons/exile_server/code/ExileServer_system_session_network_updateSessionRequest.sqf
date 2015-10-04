@@ -18,14 +18,7 @@ try
 	{
 		throw "Cannot update session for unknown network ID!";
 	};
-	{
-		if ( (_x select 0) == _sessionID ) exitWith
-		{
-			format["Session ID for '%1' has been updated to '%2'!", (name _player), _sessionID] call ExileServer_util_log;
-			ExileSessions set [_forEachIndex, [_sessionID, _player] ];
-		};
-	}
-	forEach ExileSessions;
+	[_sessionID, _player] call ExileServer_system_session_update;
 }
 catch
 {

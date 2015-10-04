@@ -8,21 +8,36 @@
  */
  
 private["_vehicle"];
+if !(ExilePlayerInSafezone) exitWith { false };
+ExilePlayerInSafezone = false;
+if !(isNil "ExileClientSafeZoneUpdateThreadHandle") then 
+{
+	[ExileClientSafeZoneUpdateThreadHandle] call ExileClient_system_thread_removeTask;
+	ExileClientSafeZoneUpdateThreadHandle = nil;
+};
+player allowDamage true;
+player addEventHandler ["HandleDamage", {_this call ExileClient_object_player_event_onHandleDamage}];
+if !(isNull ExileClientSafeZoneVehicle) then
+{
+	ExileClientSafeZoneVehicle removeEventHandler ["Fired", ExileClientSafeZoneVehicleFiredEventHandler];	
+	ExileClientSafeZoneVehicle = objNull;
+	ExileClientSafeZoneVehicleFiredEventHandler = nil;
+};
+_vehicle = vehicle player; 
+if !(_vehicle isEqualTo player) then 
+{
+	if (local _vehicle) then 
+	{
+		_vehicle allowDamage true;
+	};
+};
+if !(isNil "ExileClientSafeZoneESPEventHandler") then 
+{
+	removeMissionEventHandler ["Draw3D", ExileClientSafeZoneESPEventHandler];
+	ExileClientSafeZoneESPEventHandler = nil;
+};
 if (alive player) then 
 {
 	["SafezoneLeave"] call ExileClient_gui_notification_event_addNotification;
 };
-removeMissionEventHandler ["Draw3D",ExileSafeZoneEspEH];
-player allowDamage true;
-player removeEventHandler ["Fired",ExileSafeZoneFiredEH];
-player addEventHandler ["HandleDamage",{_this call ExileClient_object_player_event_onHandleDamage}];
-_vehicle = vehicle player;
-if !(_vehicle isEqualTo player) then
-{
-	if (local _vehicle) then
-	{
-		_vehicle allowDamage true;
-	};		
-};
-ExilePlayerInSafezone = false;
 true

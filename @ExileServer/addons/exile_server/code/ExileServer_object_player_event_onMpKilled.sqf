@@ -7,7 +7,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_victim","_killer","_addDeathStat","_addKillStat","_killerRespectPoints","_fragAttributes","_lastKillAt","_killStack","_distance","_distanceBonus","_overallRespectChange","_newKillerScore","_killMessage","_newKillerFrags","_newVictimDeaths"];
+private["_victim","_killer","_addDeathStat","_addKillStat","_killerRespectPoints","_fragAttributes","_player","_vehicleRole","_vehicle","_lastKillAt","_killStack","_distance","_distanceBonus","_overallRespectChange","_newKillerScore","_killMessage","_newKillerFrags","_newVictimDeaths"];
 if (!isServer || hasInterface) exitWith {};
 _victim = _this select 0;
 _killer = _this select 1;
@@ -38,8 +38,35 @@ else
 		}
 		else 
 		{
-			if (isPlayer _killer) then
+			_player = objNull;
+			if (isPlayer _killer) then 
 			{
+				if ((typeOf _killer) isEqualTo "Exile_Unit_Player") then
+				{
+					_player = _killer;	
+				}
+				else 
+				{
+					_uid = getPlayerUID _killer;
+					{
+						if ((getPlayerUID _x) isEqualTo _uid) exitWith 
+						{
+							_player = _x;
+						};
+					}
+					forEach allPlayers;
+				};
+			}
+			else 
+			{
+				if (isUAVConnected _killer) then 
+				{
+					_player = (UAVControl _killer) select 0;
+				};
+			};
+			if !(isNull _player) then
+			{
+				_killer = _player;
 				if (_victim getVariable["ExileIsBambi", false]) then
 				{
 					_addKillStat = false;
@@ -49,9 +76,9 @@ else
 				}
 				else 
 				{
-					if (vehicle _killer isEqualTo _killer) then
+					if ((vehicle _killer) isEqualTo _killer) then 
 					{
-						if (currentWeapon _killer isEqualTo "Exile_Melee_Axe") then
+						if ((currentWeapon _killer) isEqualTo "Exile_Melee_Axe") then
 						{
 							_fragAttributes pushBack "Humiliation";
 							_killerRespectPoints pushBack ["HUMILIATION", (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Frags" >> "humiliation"))];
@@ -63,15 +90,49 @@ else
 					}
 					else 
 					{
-						if ((driver (vehicle _killer)) isEqualTo _killer) then
+						_vehicleRole = assignedVehicleRole _killer;
+						switch (toLower (_vehicleRole select 0)) do 
 						{
-							_fragAttributes pushBack "Road Kill";
-							_killerRespectPoints pushBack ["ROAD KILL", (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Frags" >> "roadKill"))];
-						}
-						else 
-						{	
-							_fragAttributes pushBack "Passenger";
-							_killerRespectPoints pushBack ["MAD PASSENGER", (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Frags" >> "passenger"))];
+							case "driver":
+							{
+								_vehicle = vehicle _killer;
+								switch (true) do 
+								{
+									case (_vehicle isKindOf "ParachuteBase"):
+									{
+										_fragAttributes pushBack "Chute > Chopper";
+										_killerRespectPoints pushBack ["CHUTE > CHOPPER", (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Frags" >> "chuteGreaterChopper"))];
+									};
+									case (_vehicle isKindOf "Air"):
+									{
+										_fragAttributes pushBack "Big Bird";
+										_killerRespectPoints pushBack ["BIG BIRD", (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Frags" >> "bigBird"))];
+									};
+									default 
+									{
+										_fragAttributes pushBack "Road Kill";
+										_killerRespectPoints pushBack ["ROAD KILL", (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Frags" >> "roadKill"))];
+									};
+								};
+							};
+							case "turret":
+							{
+								if ((currentWeapon _killer) isKindOf "StaticWeapon") then 
+								{
+									_fragAttributes pushBack "Let it Rain";
+									_killerRespectPoints pushBack ["LET IT RAIN", (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Frags" >> "letItRain"))];
+								}
+								else 
+								{
+									_fragAttributes pushBack "Mad Passenger";
+									_killerRespectPoints pushBack ["MAD PASSENGER", (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Frags" >> "passenger"))];
+								};
+							};
+							default
+							{
+								_fragAttributes pushBack "Mad Passenger";
+								_killerRespectPoints pushBack ["MAD PASSENGER", (getNumber (configFile >> "CfgSettings" >> "Respect" >> "Frags" >> "passenger"))];
+							};							
 						};
 					};
 				};
@@ -120,16 +181,7 @@ else
 				_killMessage = format ["%1 was killed by %2", (name _victim), (name _killer)];
 				if !(count _fragAttributes isEqualTo 0) then
 				{
-					_killMessage = _killMessage + " (";
-					{
-						if (_forEachIndex > 0) then
-						{
-							_killMessage = _killMessage + ", ";
-						};
-						_killMessage = _killMessage + _x;
-					}
-					forEach _fragAttributes;
-					_killMessage = _killMessage + ")";
+					_killMessage = _killMessage + " (" + (_fragAttributes joinString ", ") + ")";
 				};
 				["systemChatRequest", [_killMessage]] call ExileServer_object_player_event_killfeed;
 				if (_addKillStat isEqualTo true) then

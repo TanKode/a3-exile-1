@@ -7,7 +7,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_target","_player","_targetUniformContent","_targetVestContent","_targetBackpackContent","_serializedCargo","_subContainerClassName","_subContainerCargo","_newSubContainerHandle","_weaponItems","_itemClassName","_magazineClassName","_magazineBulletCount","_itemQuantity","_newQuantity","_magazinesToStayInContainer"];
+private["_target","_player","_targetUniformContent","_targetVestContent","_targetBackpackContent","_serializedCargo","_subContainerClassName","_subContainerCargo","_subContainerItemInformation","_canAddSubContainer","_newSubContainerHandle","_weaponItems","_itemClassName","_magazineClassName","_magazineBulletCount","_itemQuantity","_newQuantity","_magazinesToStayInContainer"];
 _target = _this select 0;
 _player = _this select 1;
 if (_target isKindOf "Man") then
@@ -80,7 +80,15 @@ else
 	{
 		_subContainerClassName = _x select 0;
 		_subContainerCargo = _x select 1;
-		if !([_player, _subContainerClassName] call ExileClient_util_playerEquipment_contains) then
+		_subContainerItemInformation = [_subContainerClassName] call BIS_fnc_itemType;
+		_canAddSubContainer = true;
+		switch (_subContainerItemInformation select 1) do 
+		{
+			case "Backpack":	{ _canAddSubContainer = ((backpack _player) isEqualTo ""); };
+			case "Uniform":		{ _canAddSubContainer = ((uniform _player) isEqualTo ""); };
+			case "Vest": 		{ _canAddSubContainer = ((vest _player) isEqualTo ""); };
+		};
+		if (_canAddSubContainer) then
 		{
 			[_player, _subContainerClassName] call ExileClient_util_playerEquipment_add;
 			_newSubContainerHandle = objNull;

@@ -7,8 +7,26 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_espRenderRange","_distance","_alpha","_clr","_crew","_veh","_bbr","_p1","_p2","_maxHeight","_pos"];
+private["_espRenderRange","_vehicle","_velocity","_direction","_distance","_alpha","_clr","_crew","_veh","_bbr","_p1","_p2","_maxHeight","_pos"];
 _espRenderRange = _this;
+_vehicle = vehicle player;
+if (local _vehicle) then 
+{
+	if (_vehicle isKindOf "LandVehicle") then 
+	{
+		if ((speed _vehicle) > 20) then 
+		{
+			_velocity = velocity _vehicle;
+			_direction = direction _vehicle;
+			_vehicle setVelocity 
+			[
+				((sin _direction) * 5.5556),
+				((cos _direction) * 5.5556),
+				(_velocity select 2)
+			];
+		};
+	};
+};
 if (!isNull cameraOn) then
 {
 	{

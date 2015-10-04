@@ -56,17 +56,9 @@ else
 			_controlAbort ctrlCommit 0;
 			if (diag_tickTime > _abortTime) exitWith
 			{
-				if (ExileClientConnection) then
-				{
 					_controlAbort ctrlEnable true;
 					_controlAbort ctrlSetText "Abort to Lobby";
 					_controlAbort ctrlCommit 0;
-				}
-				else
-				{
-					_controlAbort ctrlSetText "No duping!";
-					_controlAbort ctrlCommit 0;
-				};
 			};
 		};
 	};

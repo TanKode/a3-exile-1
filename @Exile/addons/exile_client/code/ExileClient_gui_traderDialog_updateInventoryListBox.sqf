@@ -63,7 +63,6 @@ _inventoryLoadValue ctrlSetStructuredText (parseText format["<t size='1' font='p
 	_quality = getNumber(missionConfigFile >> "CfgExileArsenal" >> _itemClassName >> "quality");
 	_salesPrice = getNumber(missionConfigFile >> "CfgExileArsenal" >> _itemClassName >> "price");
 	_qualityColor = [1, 1, 1, 1];
-	_salesPrice = floor(_salesPrice * 0.5); 
 	switch (_quality) do
 	{
 		case 2: 		 { _qualityColor = [0, 0.78, 0.93, 1]; };
@@ -95,12 +94,47 @@ _inventoryLoadValue ctrlSetStructuredText (parseText format["<t size='1' font='p
 			[vest player, vestContainer player], 
 			[backpack player, backpackContainer player]
 		];
+		if (_itemClassName isEqualTo (primaryWeapon player)) then
+		{
+			{
+				{
+					if !(_x isEqualTo "") then
+					{
+						_salesPrice = _salesPrice + getNumber (missionConfigFile >> "CfgExileArsenal" >> _x >> "price");
+					};
+				}
+				forEach _x;
+			}
+			forEach 
+			[
+				primaryWeaponItems player,
+				primaryWeaponMagazine player
+			];
+		};
+		if (_itemClassName isEqualTo (handgunWeapon player)) then
+		{
+			{
+				{
+					if !(_x isEqualTo "") then
+					{
+						_salesPrice = _salesPrice + getNumber (missionConfigFile >> "CfgExileArsenal" >> _x >> "price");
+					};
+				}
+				forEach _x;
+			}
+			forEach 
+			[
+				handgunItems player,
+				handgunMagazine player
+			];
+		};
 	};
+	_salesPrice = floor(_salesPrice * 0.5); 
 	if (_canSellItem) then
 	{
     	if (_salesPrice > 0) then
     	{
-    		_inventoryListBox lbSetValue [_salesPrice, -1];
+    		_inventoryListBox lbSetValue [_indexEntryIndex, _salesPrice];
 	    	_inventoryListBox lbSetTextRight [_indexEntryIndex, format["%1", _salesPrice]];
 	    	_inventoryListBox lbSetPictureRight [_indexEntryIndex, "exile_client\texture\ui\poptab_trader_ca.paa"];
     	}

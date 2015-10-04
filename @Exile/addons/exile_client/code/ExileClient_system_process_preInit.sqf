@@ -18,6 +18,8 @@ else
 		"Client PreInit..." call ExileClient_util_log;
 		ExileClientSessionId = "";
 		ExileClientLastDiedPlayerObject = objNull;
+		ExileClientSafeZoneVehicle = objNull;
+		ExileClientIsWaitingForServerTradeResponse = false;
 		ExileClientXM8IsVisible = false;
 		ExileClientXM8IsPowerOn = false;
 		ExileClientXM8NextPossiblePowerToggleTime = diag_tickTime;
@@ -79,12 +81,18 @@ else
 		ExileClientNotificationIsShown = false;
 		ExileClientNotificationRun = diag_tickTime;
 		ExileLockIsShown = false;
+		ExileGuiControlClick = false;
+		[] call ExileClient_system_map_initialize;
 		[] call ExileClient_object_player_stats_reset;
 		[] call ExileClient_gui_postProcessing_initialize;
 		[] call ExileClient_gui_hud_event_hook;
 		[] call ExileClient_system_thread_initialize;
 		if (isMultiplayer) then
 		{
+			if!(getRemoteSensorsDisabled)then
+			{
+				disableRemoteSensors true;
+			};
 			[] spawn 
 			{
 				waitUntil { !(isNull player) };

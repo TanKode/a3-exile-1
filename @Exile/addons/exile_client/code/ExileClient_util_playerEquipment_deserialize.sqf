@@ -12,7 +12,7 @@ _player = _this select 0;
 _equipment = _this select 1;
 if !((_equipment select 0) isEqualTo "") then { _player forceAddUniform 	(_equipment select 0); };
 if !((_equipment select 1) isEqualTo "") then { _player addVest 			(_equipment select 1); };
-if !((_equipment select 2) isEqualTo "") then { _player addBackpack 		(_equipment select 2); };
+if !((_equipment select 2) isEqualTo "") then { _player addBackpackGlobal	(_equipment select 2); };
 if !((_equipment select 3) isEqualTo "") then { _player addHeadgear 		(_equipment select 3); };
 if !((_equipment select 4) isEqualTo "") then { _player addWeaponGlobal 	(_equipment select 4); }; 
 if !((_equipment select 5) isEqualTo "") then { _player addGoggles 			(_equipment select 5); };

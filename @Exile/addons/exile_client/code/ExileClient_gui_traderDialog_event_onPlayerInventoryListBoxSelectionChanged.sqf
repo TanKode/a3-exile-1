@@ -14,16 +14,23 @@ _listBox = _this select 0;
 _index = _this select 1;
 _dialog = uiNameSpace getVariable ["RscExileTraderDialog", displayNull];
 _sellButton = _dialog displayCtrl 4007;
-if (_index > -1) then
+if (ExileClientIsWaitingForServerTradeResponse) then
 {
-	_itemClassName = _listBox lbData _index;
-	_itemClassName call ExileClient_gui_traderDialog_updateItemStats;
-	_sellButton ctrlEnable !(_listBox lbValue _index isEqualTo -1);
-	_storeListBox = _dialog displayCtrl 4009;
-	_storeListBox lbSetCurSel -1;
+	_sellButton ctrlEnable false;
 }
 else 
 {
-	_sellButton ctrlEnable false;
+	if (_index > -1) then
+	{
+		_itemClassName = _listBox lbData _index;
+		_itemClassName call ExileClient_gui_traderDialog_updateItemStats;
+		_sellButton ctrlEnable !(_listBox lbValue _index isEqualTo -1);
+		_storeListBox = _dialog displayCtrl 4009;
+		_storeListBox lbSetCurSel -1;
+	}
+	else 
+	{
+		_sellButton ctrlEnable false;
+	};
 };
 true

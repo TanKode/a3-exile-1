@@ -78,7 +78,7 @@ if ( getNumber(_recipeConfig >> "requiresOcean") == 1 ) then
 if ( getNumber(_recipeConfig >> "requiresFire") == 1 ) then
 {
 	_description = _description + format["<t size='1' font='puristaMedium' align='left'>%1</t>", "Fire"];
-	if( [getPosATL player, 4] call ExileClient_util_world_isFireNearby ) then 
+	if( [getPosATL player, 4] call ExileClient_util_world_isFireInRange ) then 
 	{
 		_description = _description + format["<t size='1' font='puristaMedium' align='right' color='%1'>%2</t>", "#b2ec00", "FOUND"];
 	}

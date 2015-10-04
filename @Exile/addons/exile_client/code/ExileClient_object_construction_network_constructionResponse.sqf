@@ -10,8 +10,13 @@
 private["_objectNetID","_object"];
 _objectNetID = _this select 0;
 _object = objectFromNetId _objectNetID;
-	format ["Construction ObjectRecived Class: %1 Possiton: %2",typeOf _object,getpos _object] call ExileClient_util_log;
 ExileClientConstructionObject = _object;
 ExileClientConstructionCanPlaceObject = false;
-[] spawn ExileClient_construction_thread;
+if((typeOf _object) isEqualTo "Exile_Construction_BaseCamera_Preview")then
+{
+}
+else
+{
+	[] spawn ExileClient_construction_modeBase_thread;
+};
 true

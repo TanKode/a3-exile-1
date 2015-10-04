@@ -21,7 +21,7 @@ _groundHolder = createVehicle ["GroundWeaponHolder",_objectpos, [], 0, "CAN_COLL
 _groundHolder setPosATL _objectpos;
 _filter  = ("getText(_x >> 'staticObject') == _typeof" configClasses(configFile >> "CfgConstruction")) select 0;
 _kitMagazine = getText(_filter >> "kitMagazine");
-_groundHolder addItemCargoGlobal [_kitMagazine,1];
+_groundHolder addItemCargoGlobal [_kitMagazine,1]; 
 [_groundHolder,_items] call ExileServer_util_fill_fillItems;
 [_groundHolder,_magazines] call ExileServer_util_fill_fillMagazines;
 [_groundHolder,_weapons] call ExileServer_util_fill_fillWeapons;

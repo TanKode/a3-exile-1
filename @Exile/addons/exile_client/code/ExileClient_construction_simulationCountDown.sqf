@@ -14,21 +14,19 @@ _simulatePhysics = _this select 2;
 if ((_object isKindOf "Exile_Construction_Abstract_Physics") && _simulatePhysics) then
 {
 	_freezeObjectNow = false;
-		systemChat "Simulating PhsyX...";
 	_positionBefore = getPosATL _object;
 	_vectorDirectionBefore = vectorDir _object;
 	_vectorUpBefore = vectorUp _object;
 	_startTime = diag_tickTime;
 	player reveal _object; 
-	_object enableSimulation true;
+	_object enableSimulationGlobal true;
 	uiSleep 5;
 	while {!_freezeObjectNow} do 
 	{
 		_velocity = velocityModelSpace _object;
 		_velocityAbsolute =  vectorMagnitude _velocity; 
 		if ( _velocityAbsolute < 0.01 ) then
-		{
-				systemchat format["Freezing object now: %1", _velocityAbsolute];
+		{		
 			_freezeObjectNow = true;
 		}
 		else 
@@ -39,13 +37,12 @@ if ((_object isKindOf "Exile_Construction_Abstract_Physics") && _simulatePhysics
 	_distanceMoved = (getPosATL _object) distance _positionBefore;
 	if (_distanceMoved < 0.02) then
 	{
-			systemChat format["Resetting position due to PhsyX inaccuracy (%1m)...", _distanceMoved];
-		_object enableSimulation false;
+		_object enableSimulationGlobal false;
 		_object setVectorDirAndUp [_vectorDirectionBefore, _vectorUpBefore];
 		_object setPosATL _positionBefore;
 	};
 };
-_object enableSimulation false;
+_object enableSimulationGlobal false;
 _position = getPosATL _object;
 _vectorDirection = vectorDir _object;
 _vectorUp = vectorUp _object;

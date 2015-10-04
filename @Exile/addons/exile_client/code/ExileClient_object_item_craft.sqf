@@ -37,7 +37,7 @@ if ( getNumber(_recipeConfig >> "requiresOcean") == 1 ) then
 };
 if ( getNumber(_recipeConfig >> "requiresFire") == 1 ) then
 {
-	if !([getPos player, 4] call ExileClient_util_world_isFireNearby) then 
+	if !([getPos player, 4] call ExileClient_util_world_isFireInRange) then 
 	{
 		_metSideConditions = false;
 	};
@@ -86,7 +86,7 @@ if (_metSideConditions) then
 					_componentItemClassName = _x select 1;
 					for "_i" from 1 to _componentQuantity do 
 					{
-						player removeMagazine _componentItemClassName;
+						player removeMagazineGlobal _componentItemClassName;
 					};
 				}
 				forEach _components;
@@ -96,7 +96,7 @@ if (_metSideConditions) then
 					_addedItems = [_addedItems, _returnedItemClassName, _returnedItemQuantity] call BIS_fnc_addToPairs;
 					for "_i" from 1 to _returnedItemQuantity do 
 					{
-						player addMagazine _returnedItemClassName;
+						player addItem _returnedItemClassName;
 					};
 				} 
 				forEach _returnedItems;

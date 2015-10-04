@@ -18,7 +18,7 @@ ExileClientPlayerOxygen = getOxygenRemaining player * 100;
 ExileClientPlayerAttributes set [0, (1 - damage player) * 100];
 ExileClientPlayerAttributes set [1, (1 - getFatigue player) * 100];
 ExileClientPlayerIsAbleToBreathe = isAbleToBreathe player;
-ExileClientPlayerIsInfantry = vehicle player == player;
+ExileClientPlayerIsInfantry = (vehicle player) isEqualTo player;
 ExileClientPlayerVelocity = player call BIS_fnc_absSpeed;
 ExileClientPlayerIsBleeding = isBleeding player;
 ExileClientPlayerIsBurning = isBurning player;
@@ -45,10 +45,21 @@ _hungerFactor = 1;
 _thirstFactor = 1;
 if (ExileClientPlayerIsInfantry) then 
 {
+	ExileClientPlayerVelocity = ExileClientPlayerVelocity min 24;
 	if (ExileClientPlayerVelocity > 0) then 
 	{
 		_hungerFactor = 1 + ExileClientPlayerVelocity / 64 * _timeElapsed; 
 		_thirstFactor = 1 + ExileClientPlayerVelocity / 48 * _timeElapsed; 
+	};
+}
+else 
+{
+	if (ExileClientPlayerIsBambi) then 
+	{
+		if !((typeOf (vehicle player)) isEqualTo "Steerable_Parachute_F") then
+		{
+			call ExileClient_object_player_bambiStateEnd;
+		};
 	};
 };
 ExileClientPlayerAttributes set [2, ((((ExileClientPlayerAttributes select 2) - (100 / 5400 * _hungerFactor * _timeElapsed)) min 100) max 0)];

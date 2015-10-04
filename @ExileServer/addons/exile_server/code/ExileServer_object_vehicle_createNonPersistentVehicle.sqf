@@ -17,7 +17,15 @@ clearBackpackCargoGlobal _vehicleObject;
 clearItemCargoGlobal _vehicleObject;
 clearMagazineCargoGlobal _vehicleObject;
 clearWeaponCargoGlobal _vehicleObject;
-_position set[2, (_position select 2) + 0.25]; 
+if (getNumber (configFile >> "CfgSettings" >> "VehicleSpawn" >> "nightVision") isEqualTo 0) then 
+{
+	_vehicleObject disableNVGEquipment true;
+};
+if (getNumber (configFile >> "CfgSettings" >> "VehicleSpawn" >> "thermalVision") isEqualTo 0) then 
+{
+	_vehicleObject disableTIEquipment true;
+};
+_position set[2, (_position select 2) + 0.05]; 
 _vehicleObject setDir _direction;		
 if (_usePositionATL) then
 {

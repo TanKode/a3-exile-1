@@ -2160,7 +2160,6 @@ class CfgTraderCategories
 			"6Rnd_45ACP_Cylinder",
 			"6Rnd_GreenSignal_F",
 			"6Rnd_RedSignal_F",
-			"7Rnd_408_Mag",
 			"9Rnd_45ACP_Mag"
 		};
 	};

@@ -19,7 +19,7 @@ if (!isNull _player) then
 	_player setVariable["ExileHunger", _hunger];
 	_player setVariable["ExileThirst", _thirst];
 	_player setVariable["ExileAlcohol", _alcohol];
-	if!(_player in ExileSystemPlayerSaveASYNC)then
+	if !(_player in ExileSystemPlayerSaveASYNC) then
 	{
 		ExileSystemPlayerSaveASYNC pushBack _player;
 	};

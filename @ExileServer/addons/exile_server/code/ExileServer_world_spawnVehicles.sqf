@@ -7,8 +7,7 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_mapCenterKindaButNotReally","_mapsizeX","_mapsizeY","_gridSize","_gridVehicles","_gridSizeOffset","_vehicleCount","_debugMarkers","_vehicleClassNames","_maximumDamage","_damageChance","_xSize","_workingXSize","_ySize","_workingYSize","_position","_spawned","_spawnedPositions","_positionReal","_spawnControl","_vehicleClassName","_vehicle","_hitpoints","_debugMarker"];
-_mapCenterKindaButNotReally = (getArray(configFile >> "CfgWorlds" >> worldName >> "CenterPosition"));
+private["_mapsizeX","_mapsizeY","_gridSize","_gridVehicles","_gridSizeOffset","_vehicleCount","_debugMarkers","_vehicleClassNames","_maximumDamage","_damageChance","_xSize","_workingXSize","_ySize","_workingYSize","_position","_spawned","_spawnedPositions","_positionReal","_spawnControl","_vehicleClassName","_vehicle","_hitpoints","_debugMarker"];
 _mapsizeX = worldSize; 
 _mapsizeY = worldSize; 
 _gridSize = getNumber(configFile >> "CfgSettings" >> "VehicleSpawn" >> "vehiclesGridSize");
@@ -32,7 +31,7 @@ for "_xSize" from 0 to _mapsizeX step _gridSize do
 		while {_spawned < _gridVehicles} do 
 		{
 			_positionReal = [_position, 25, _gridSize, 5, 0 , 1 , 0 , _spawnedPositions] call BIS_fnc_findSafePos;
-			if(_positionReal isEqualTo _mapCenterKindaButNotReally)exitWith{};
+			if(count _positionReal isEqualTo 3)exitWith{};
 			_spawnControl = [[(_positionReal select 0) - 50, (_positionReal select 1) + 50],[(_positionReal select 0) + 50,(_positionReal select 1) - 50]];
 			_spawnedPositions pushBack _spawnControl;
 			_positionReal pushBack 0;

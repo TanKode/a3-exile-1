@@ -7,8 +7,9 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_vehicle"];
-_vehicle = _this select 0;
+private["_vehicleID","_vehicle"];
+_vehicleID = _this select 0;
+_vehicle = objectFromNetId _vehicleID;
 if(local _vehicle)then
 {
 	_this call ExileClient_util_vehicle_push;

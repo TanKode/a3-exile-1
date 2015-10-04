@@ -31,18 +31,13 @@ if (diag_tickTime - ExileHudLastGroupRenderedAt >= 1) then
 		};
 		_lines = "";
 		{
-			switch (true) do
 			{
-				case ((damage _x) isEqualTo 0): { _color = "#c0b9ff4b"; };
-				case ((damage _x) < 0.2): 		{ _color = "#c0ffac4b"; };
-				default 						{ _color = "#c0d20707"; };
-			};
-			if ((vehicle _x) isEqualTo _x) then
-			{
-				_lines = _lines + format ["<t color='%1'>%2</t><br/>", _color, name _x];
-			}
-			else 
-			{
+				switch (true) do
+				{
+					case ((damage _x) isEqualTo 0): { _color = "#c0b9ff4b"; };
+					case ((damage _x) < 0.2): 		{ _color = "#c0ffac4b"; };
+					default 						{ _color = "#c0d20707"; };
+				};
 				switch (toLower ((assignedVehicleRole _x) select 0)) do
 				{
 					case "driver":
@@ -62,7 +57,8 @@ if (diag_tickTime - ExileHudLastGroupRenderedAt >= 1) then
 						_lines = _lines + format ["<t color='%1'>%2</t><br/>", _color, name _x];
 					};
 				};
-			};
+			}
+			forEach (crew _x);
 		}
 		forEach _members;
 		_lines = "<t shadow='0' size='0.8'>" + _lines + "</t>";
