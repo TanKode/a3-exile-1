@@ -144,11 +144,11 @@ if (VEMF_invasCount < _maxInvasions) then
 								waitUntil { uiSleep 1; (((getPos _crate) select 2) < 7) };
 								detach _crate;
 							};
-							if not isNil"_circle" then
+							if not isNil _circle then
 							{
 								deleteMarker _circle
 							};
-							if not isNil"_dot" then
+							if not isNil _dot then
                             {
                                 deleteMarker _dot
                             };
