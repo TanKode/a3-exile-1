@@ -488,3 +488,5 @@ _chair setPosATL [23379.6, 24169.3, 4.56662];
     _chair
 ]
 call ExileClient_object_trader_create;
+
+[] execVM "IgiLoad\IgiLoadInit.sqf";
