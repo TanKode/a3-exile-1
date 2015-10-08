@@ -38,6 +38,11 @@ if (damage _target isEqualto 1) then
 					(owner _killer) publicVariableClient "ExileClientPlayerScore";
 					ExileClientPlayerScore = nil;
 					format["setAccountMoneyAndRespect:%1:%2:%3", _killer getVariable ["ExileMoney", 0], _newRespect, (getPlayerUID _killer)] call ExileServer_system_database_query_fireAndForget;
+
+					_newKillerFrags = _killer getVariable ["ExileKills", 0];
+					_killer setVariable ["ExileKills", _newKillerFrags + 1];
+					format["addAccountKill:%1", (getPlayerUID _killer)] call ExileServer_system_database_query_fireAndForget;
+					_killer call ExileServer_object_player_sendStatsUpdate;
 				};
 			};
 

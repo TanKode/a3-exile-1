@@ -22,7 +22,7 @@ if (DMS_DEBUG) then
 {
 	diag_log format ["DMS_DEBUG OnKilled :: Logging AI death with parameters: %1",_this];
 };
-	
+
 _unit 			= _this select 0 select 0;
 _killer 		= _this select 0 select 1;
 _side 			= _this select 1;
@@ -73,7 +73,7 @@ if(DMS_ai_remove_launchers && {(_launcherVar != "") || {_launcher != ""}}) then
 
 	_rockets = _launcher call DMS_fnc_selectMagazine;
 	_unit removeWeaponGlobal _launcher;
-	
+
 	{
 		if(_x == _rockets) then
 		{
@@ -165,7 +165,7 @@ if (!isNull _av) then
 
 					unassignVehicle _driver;
 					moveOut _driver;
-					
+
 					_driver disableCollisionWith _av;
 
 					_av setVehicleAmmoDef 1;
@@ -185,7 +185,7 @@ if (!isNull _av) then
 					if !(alive _driver) exitWith {};
 
 					_driver moveInGunner _av;
-					
+
 					_driver enableCollisionWith _av;
 
 					if (DMS_DEBUG) then
@@ -196,7 +196,7 @@ if (!isNull _av) then
 					if (_owner!=2) then
 					{
 						_start = time;
-						
+
 						// Controlling AI... yes. I have to do this
 						waitUntil
 						{
@@ -204,7 +204,7 @@ if (!isNull _av) then
 							[_driver] orderGetIn true;
 
 							_driver moveInGunner _av;
-						
+
 							(((gunner _av) isEqualTo _driver) || {(time-_start)>30})
 						};
 
@@ -218,7 +218,7 @@ if (!isNull _av) then
 							[_driver] orderGetIn true;
 
 							_driver moveInGunner _av;
-						
+
 							(((gunner _av) isEqualTo _driver) || {(time-_start)>30})
 						};
 
@@ -304,7 +304,7 @@ if ((!isNull _playerObj) && {((getPlayerUID _playerObj) != "") && {_playerObj is
 	{
 		_money = _playerObj getVariable ["ExileMoney", 0];
 		_respect = _playerObj getVariable ["ExileScore", 0];
-		
+
 		if (_moneyChange!=0) then
 		{
 			private ["_msgType", "_msgParams"];
@@ -350,6 +350,11 @@ if ((!isNull _playerObj) && {((getPlayerUID _playerObj) != "") && {_playerObj is
 
 		// Update client database entry
 		format["setAccountMoneyAndRespect:%1:%2:%3", _money, _respect, (getPlayerUID _playerObj)] call ExileServer_system_database_query_fireAndForget;
+
+		_newKillerFrags = _playerObj getVariable ["ExileKills", 0];
+		_playerObj setVariable ["ExileKills", _newKillerFrags + 1];
+		format["addAccountKill:%1", (getPlayerUID _playerObj)] call ExileServer_system_database_query_fireAndForget;
+		_playerObj call ExileServer_object_player_sendStatsUpdate;
 	};
 };
 
