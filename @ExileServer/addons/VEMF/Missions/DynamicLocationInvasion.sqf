@@ -1,7 +1,7 @@
 /*
 	DynamicLocationInvasion by Vampire, rewritten by IT07
 */
-private ["_settings","_grpCount","_groupUnits","_playerCheck","_loc","_hasPlayers","_marker","_spawned","_grpArr","_unitArr","_done","_boxes","_box","_chute","_colors","_lightType","_light","_smoke"];
+private ["_settings","_grpCount","_groupUnits","_playerCheck","_loc","_hasPlayers","_circle","_dot","_spawned","_grpArr","_unitArr","_done","_boxes","_box","_chute","_colors","_lightType","_light","_smoke"];
 
 // Define _settings
 _settings = [["DLI"],["maxInvasions","groupCount","groupUnits","distanceCheck","distanceTooClose","distanceMaxPrefered","playerCheck","crateAltitude","useMarker","parachuteCrate","crateVisualMarker","crateMapMarker","crateSpawnSound"]] call VEMF_fnc_getSetting;
@@ -144,13 +144,13 @@ if (VEMF_invasCount < _maxInvasions) then
 								waitUntil { uiSleep 1; (((getPos _crate) select 2) < 7) };
 								detach _crate;
 							};
-							if not isNil _circle then
+							if not isNull _circle then
 							{
-								deleteMarker _circle
+								deleteMarker _circle;
 							};
-							if not isNil _dot then
+							if not isNull _dot then
                             {
-                                deleteMarker _dot
+                                deleteMarker _dot;
                             };
 							VEMF_invasCount = VEMF_invasCount - 1;
 							VEMF_missionCount = VEMF_missionCount - 1;
@@ -213,14 +213,14 @@ if (VEMF_invasCount < _maxInvasions) then
 						if not _completeMsg then
 						{
 							["DLI", 0, "Mission success broadcast returned false."] call VEMF_fnc_log;
-							if not isNil"_circle" then
-                            {
-                                deleteMarker _circle
-                            };
-                            if not isNil"_dot" then
-                            {
-                                deleteMarker _dot
-                            };
+							if not isNull _circle then
+							{
+								deleteMarker _circle;
+							};
+							if not isNull _dot then
+							{
+								deleteMarker _dot;
+							};
 							VEMF_invasCount = VEMF_invasCount - 1;
 							VEMF_missionCount = VEMF_missionCount - 1;
 						};
@@ -229,14 +229,14 @@ if (VEMF_invasCount < _maxInvasions) then
 				if isNil"_spawned" then
 				{
 					["DLI", 0, format["Failed to spawn AI in %1", _locName]] call VEMF_fnc_log;
-					if not isNil"_circle" then
-                    {
-                        deleteMarker _circle
-                    };
-                    if not isNil"_dot" then
-                    {
-                        deleteMarker _dot
-                    };
+					if not isNull _circle then
+					{
+						deleteMarker _circle;
+					};
+					if not isNull _dot then
+					{
+						deleteMarker _dot;
+					};
 					VEMF_invasCount = VEMF_invasCount - 1;
 					VEMF_missionCount = VEMF_missionCount - 1;
 				};
@@ -244,14 +244,14 @@ if (VEMF_invasCount < _maxInvasions) then
 			if not _playerNear then
 			{
 				["DLI", 1, format["Invasion of %1 timed out.", _locName]] call VEMF_fnc_log;
-				if not isNil"_circle" then
-                {
-                    deleteMarker _circle
-                };
-                if not isNil"_dot" then
-                {
-                    deleteMarker _dot
-                };
+				if not isNull _circle then
+				{
+					deleteMarker _circle;
+				};
+				if not isNull _dot then
+				{
+					deleteMarker _dot;
+				};
 				VEMF_invasCount = VEMF_invasCount - 1;
 				VEMF_missionCount = VEMF_missionCount - 1;
 			};
