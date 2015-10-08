@@ -25,6 +25,8 @@ asm.ini
 *.dll
 *.txt
 *.vdf
+*.mdmp
+*.bidmp
 
 !ARMA_BAN.dll
 !ARMA_LOAD.dll
