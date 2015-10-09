@@ -83,7 +83,7 @@ else
 			_currentMagazineClassName = _currentWeaponState select 3;
 			_currentAmmoCount = _currentWeaponState select 4;
 			_currentMagazineCount = ((count (magazinesAmmoFull _vehicle)) - 1) max 0; 
-			_needReload = needReload _vehicle;
+			_needReload = needReload _vehicle; 
 		};
 		case 1:
 		{
@@ -103,7 +103,7 @@ else
 			{
 				_compatibleMagazines = getArray (configFile >> "CfgWeapons" >> _currentWeaponClassName >> "magazines");
 			};
-			_needReload = needReload player;
+			_needReload = [_currentMagazineClassName, _currentAmmoCount] call ExileClient_util_gear_needReload;
 			{
 				if (_x in _compatibleMagazines) then
 				{

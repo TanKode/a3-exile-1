@@ -41,7 +41,7 @@ if!(_magazines isEqualTo [])then
 };
 _newMagazines pushBack _toMagazine;
 {
-	_object addItem _x;
+	_object addMagazine _x; 
 }
 forEach _newMagazines;
 true

@@ -31,6 +31,7 @@ if (diag_tickTime - ExileHudLastGroupRenderedAt >= 1) then
 		};
 		_lines = "";
 		{
+			if (_x isKindOf "Exile_Unit_Player") then 
 			{
 				switch (true) do
 				{
@@ -38,27 +39,39 @@ if (diag_tickTime - ExileHudLastGroupRenderedAt >= 1) then
 					case ((damage _x) < 0.2): 		{ _color = "#c0ffac4b"; };
 					default 						{ _color = "#c0d20707"; };
 				};
-				switch (toLower ((assignedVehicleRole _x) select 0)) do
-				{
-					case "driver":
-					{
-						_lines = _lines + format ["<t color='%1'>%2 <img image='\exile_client\texture\hud\hud_group_driver.paa'/></t><br/>", _color, name _x];
-					};
-					case "turret":
-					{
-						_lines = _lines + format ["<t color='%1'>%2 <img image='\exile_client\texture\hud\hud_group_gunner.paa'/></t><br/>", _color, name _x];
-					};
-					case "cargo":
-					{
-						_lines = _lines + format ["<t color='%1'>%2 <img image='\exile_client\texture\hud\hud_group_passenger.paa'/></t><br/>", _color, name _x];
-					};
-					default
-					{
-						_lines = _lines + format ["<t color='%1'>%2</t><br/>", _color, name _x];
-					};
-				};
+				_lines = _lines + format ["<t color='%1'>%2</t><br/>", _color, name _x];
 			}
-			forEach (crew _x);
+			else 
+			{
+				{
+					switch (true) do
+					{
+						case ((damage _x) isEqualTo 0): { _color = "#c0b9ff4b"; };
+						case ((damage _x) < 0.2): 		{ _color = "#c0ffac4b"; };
+						default 						{ _color = "#c0d20707"; };
+					};
+					switch (toLower ((assignedVehicleRole _x) select 0)) do
+					{
+						case "driver":
+						{
+							_lines = _lines + format ["<t color='%1'>%2 <img image='\exile_client\texture\hud\hud_group_driver.paa'/></t><br/>", _color, name _x];
+						};
+						case "turret":
+						{
+							_lines = _lines + format ["<t color='%1'>%2 <img image='\exile_client\texture\hud\hud_group_gunner.paa'/></t><br/>", _color, name _x];
+						};
+						case "cargo":
+						{
+							_lines = _lines + format ["<t color='%1'>%2 <img image='\exile_client\texture\hud\hud_group_passenger.paa'/></t><br/>", _color, name _x];
+						};
+						default
+						{
+							_lines = _lines + format ["<t color='%1'>%2</t><br/>", _color, name _x];
+						};
+					};
+				}
+				forEach (crew _x);
+			};
 		}
 		forEach _members;
 		_lines = "<t shadow='0' size='0.8'>" + _lines + "</t>";

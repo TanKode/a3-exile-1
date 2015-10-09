@@ -50,13 +50,13 @@ while {ExileClientConstructionResult isEqualTo 0} do
 		{
 			case 1:
 			{
-				_position = player modelToWorld ExileClientConstructionOffset;
+				_position = ASLtoATL (AGLtoASL (player modelToWorld ExileClientConstructionOffset));
 				_rotation = (ExileClientConstructionRotation + (getDir player) + 360) % 360;
 				_vectorDirection = [sin(_rotation), cos(_rotation), 0]; 
 			};
 			case 2:
 			{
-				_position = player modelToWorld ExileClientConstructionOffset;
+				_position = ASLtoATL (AGLtoASL (player modelToWorld ExileClientConstructionOffset));
 				_position = 
 				[
 					(_position select 0) - ((_position select 0) % (ExileClientConstructionGrid select 0)),
@@ -88,7 +88,7 @@ while {ExileClientConstructionResult isEqualTo 0} do
 								_possibleSnapNamedSelections = getArray(ExileClientConstructionConfig >> "SnapObjects" >> _snapToClassName >> "selections");
 								ExileClientConstructionCurrentSnapToObject = _potentionalSnapObject;
 								{
-									_possibleSnapPosition = _potentionalSnapObject modelToWorld (_potentionalSnapObject selectionPosition _x);
+									_possibleSnapPosition = ASLtoATL ((AGLtoASL (_potentionalSnapObject modelToWorld (_potentionalSnapObject selectionPosition _x))));
 									ExileClientConstructionPossibleSnapPositions pushBack _possibleSnapPosition;
 								}
 								forEach _possibleSnapNamedSelections;
@@ -98,7 +98,7 @@ while {ExileClientConstructionResult isEqualTo 0} do
 				}
 				else 
 				{
-					_position = player modelToWorld ExileClientConstructionOffset;
+					_position = ASLtoATL (AGLtoASL (player modelToWorld ExileClientConstructionOffset));
 					_rotation = (ExileClientConstructionRotation + (getDir player) + 360) % 360;
 					_vectorDirection = [sin(_rotation), cos(_rotation), 0]; 
 					{
@@ -121,14 +121,14 @@ while {ExileClientConstructionResult isEqualTo 0} do
 	_contactThreshold = 0.1; 
 	_isBelowTerrain = true;
 	{
-		_worldPosition = ExileClientConstructionObject modelToWorld _x;
+		_worldPosition = ASLtoATL (AGLtoASL (ExileClientConstructionObject modelToWorld _x));
 		if ((_worldPosition select 2) > _contactThreshold) exitWith {_isBelowTerrain = false};
 	}
 	forEach _boundingBoxPointsTop;
 	_isInAir = true;
 	_numberOfContactsBottom = 0;
 	{
-		_worldPosition = ExileClientConstructionObject modelToWorld _x;
+		_worldPosition = ASLtoATL (AGLtoASL (ExileClientConstructionObject modelToWorld _x));
 		if ((_worldPosition select 2) < _contactThreshold) then 
 		{
 			_isInAir = false

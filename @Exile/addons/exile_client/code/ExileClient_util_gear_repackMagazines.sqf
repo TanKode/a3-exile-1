@@ -23,7 +23,7 @@ if (_ammoPerMagazine > 1) then
 		};
 	}
 	forEach _equippedMagazines;
-	_container removeItems _magazineClassName;
+	_container removeMagazines _magazineClassName;
 	_ammoToRefund = _equippedAmmo + _ammoToChange;
 	while {_ammoToRefund > 0} do
 	{

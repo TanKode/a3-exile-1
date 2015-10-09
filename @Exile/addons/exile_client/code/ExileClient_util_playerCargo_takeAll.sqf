@@ -60,7 +60,7 @@ if (_target isKindOf "Man") then
 	{
 		if ([_player, (binocular _target)] call ExileClient_util_playerCargo_add) then
 		{
-			_target unlinkItem (binocular _target); 
+			_target removeWeaponGlobal (binocular _target); 
 		};
 	};
 	{

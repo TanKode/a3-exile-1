@@ -7,10 +7,15 @@
  * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/.
  */
  
-private["_vehicleObject"];
-_vehicleObject = _this select 0;
-if !(simulationEnabled _vehicleObject) then 
+private["_config","_parents"];
+_config = _this;
+_parents = [];
+while { isClass _config } do 
 {
-	_vehicleObject enableSimulationGlobal true;
+	_config = inheritsFrom _config;
+	if (isClass _config) then 
+	{
+		_parents pushBack (configName _config);
+	};
 };
-true
+_parents

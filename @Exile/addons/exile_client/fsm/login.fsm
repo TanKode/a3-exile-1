@@ -226,7 +226,7 @@ class FSM
        "" \n
        "0 fadeSound 0;" \n
        "" \n
-       "player enableSimulationGlobal false;" \n
+       "player enableSimulation false;" \n
        "" \n
        "disableUserInput true;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -760,7 +760,7 @@ class FSM
        "" \n
        "3 fadeSound 1;" \n
        "" \n
-       "player enableSimulationGlobal true;" \n
+       "player enableSimulation true;" \n
        "" \n
        "" \n
        "" \n
@@ -834,7 +834,7 @@ class FSM
        "" \n
        "3 fadeSound 1;" \n
        "" \n
-       "player enableSimulationGlobal false;"/*%FSM</STATEINIT""">*/;
+       "player enableSimulation false;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

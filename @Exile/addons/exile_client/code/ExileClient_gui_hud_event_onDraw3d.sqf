@@ -22,7 +22,7 @@ if (ExileHudIsVisible) then
 		{
 			_icon = if (ExileClientConstructionIsInSelectSnapObjectMode) then { "\exile_client\texture\ui\snap_blue_ca.paa" } else { "\exile_client\texture\ui\snap_yellow_ca.paa" };
 			{
-				drawIcon3D [_icon, [1, 1, 1, 1], _x, 1, 1, 0];
+				drawIcon3D [_icon, [1, 1, 1, 1], ASLtoAGL ((ATLToASL _x)), 1, 1, 0];
 			}
 			forEach ExileClientConstructionPossibleSnapPositions;
 		};
