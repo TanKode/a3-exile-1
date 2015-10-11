@@ -16,7 +16,9 @@ if (_responseCode isEqualTo 0) then {
 	_newPlayerMoney = parseNumber _newPlayerMoneyString;
 	_salesPrice = ExileClientPlayerMoney - _newPlayerMoney;
 	ExileClientPlayerMoney = _newPlayerMoney;
-	if (!(_vehicleObject isKindof "Slingload_base_F")) then {
+	if (_vehicleObject isKindof "Slingload_base_F") then {
+		_vehicleObject allow damage false;
+	} else {
 		player moveInDriver _vehicleObject;
 	};
 	["VehiclePurchasedInformation", [_salesPrice * -1]] call ExileClient_gui_notification_event_addNotification;
