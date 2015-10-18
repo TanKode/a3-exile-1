@@ -53,5 +53,6 @@ if ((getPosATL _vehicleObject) call ExileClient_util_world_isInTraderZone) then
 };
 if (_vehicleObject isKindof "Slingload_base_F") then {
 	_vehicleObject allowDamage false;
+	_vehicleObject setDamage 0;
 };
 _vehicleObject

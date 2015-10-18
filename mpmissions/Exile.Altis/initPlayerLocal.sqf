@@ -490,3 +490,4 @@ _chair setPosATL [23379.6, 24169.3, 4.56662];
 call ExileClient_object_trader_create;
 
 [] execVM "IgiLoad\IgiLoadInit.sqf";
+call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
