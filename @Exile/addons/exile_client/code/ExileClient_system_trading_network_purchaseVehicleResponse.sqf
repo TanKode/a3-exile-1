@@ -17,7 +17,8 @@ if (_responseCode isEqualTo 0) then {
 	_salesPrice = ExileClientPlayerMoney - _newPlayerMoney;
 	ExileClientPlayerMoney = _newPlayerMoney;
 	if (_vehicleObject isKindof "Slingload_base_F") then {
-		_vehicleObject allow damage false;
+		_vehicleObject allowDamage false;
+	_vehicleObject setDamage 0;
 	} else {
 		player moveInDriver _vehicleObject;
 	};
